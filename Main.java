@@ -43,8 +43,6 @@ class Main {
         // res = productOfArrayExceptSelf(new int[]{1, 2, 3, 4}); 
         res = productOfArrayExceptSelf(new int[]{-1,1,0,-3,3}); 
         printArrayRes(res); 
-
-
     }
 
 
