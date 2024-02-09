@@ -1,5 +1,5 @@
 
-import static string.Easy.*; 
+import static arrays.Easy.*; 
 
 class Main {
     static Object res;  
@@ -41,18 +41,38 @@ class Main {
         // }
 
         // res = productOfArrayExceptSelf(new int[]{1, 2, 3, 4}); 
-        res = productOfArrayExceptSelf(new int[]{-1,1,0,-3,3}); 
-        printArrayRes(res); 
+        //res = productOfArrayExceptSelf(new int[]{-1,1,0,-3,3}); 
+        //res = maxSubArrayON(new int[]{-2,1,-3,4,-1,2,1,-5,4}); 
+        //res = maxSubArrayON(new int[]{1});
+        // res = maxSubArrayON(new int[]{5,4,-1,7,8});
+        // printArrayRes(res); 
+
+        // int maxValue = maxBinaryTree();
+        // System.out.println("Maximu value in the binary tree " + maxValue);
+        //int res = maxProductSubArray(new int[] {2, 3, -2, 4});
+        // int res = maxProductSubArray(new int[] {-2, 0, -1});
+
+        //int res = findMinimumInRotatedSortedArray(new int[]{3,4,5,1,2});      
+        // int res = findMinimumInRotatedSortedArray(new int[]{3,1,2});      
+        // if ( res != (MAX_VALUE_SORTED_ARRAY + 1) )
+        //     printRes(res); 
+
+
+        int  res= searchInRotatedSortedArray(new int[]{4,5,6,7,0,1,2}, 2); 
+        printRes(res); 
     }
 
 
 
-    private static void printArrayRes(Object res) {
+    private static void printRes(Object res) {
         if (res != null && res instanceof int[]) {
             int[] arrayResult = (int[]) res; 
             for(int val : arrayResult) {
                  System.out.println(val);
             }
         }
-    }
+        else if(res != null && res instanceof Integer) {
+            System.out.println(res); 
+        }
+    } 
 }
