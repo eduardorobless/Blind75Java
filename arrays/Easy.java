@@ -252,7 +252,26 @@ public class Easy {
     //{
 
     // }
-    // public statix int containerWithMostWater(int[] nums) {
+    public static int containerWithMostWater(int[] nums) {
+        int l = 0; 
+        int r = nums.length -1; 
+        int maxArea = 0;
+        
+        while(l < r) {
+            // calculate max area 
+            int area = (r-l) * Math.min(nums[l], nums[r]); 
+            maxArea = Math.max(maxArea, area); 
 
-    // }
+            // add conditions to maximize water 
+            if (nums[l] < nums[r]) {
+                l++;
+            }
+            else {
+                r--;
+            }
+        
+        }
+
+        return maxArea;
+    }
 }
