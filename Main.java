@@ -1,11 +1,18 @@
 
 import static arrays.Easy.*; 
 import static arrays.Medium.*;
+import static binary.Easy.*;
+import static binary.Medium.*;
 import  java.util.List; 
+
 class Main {
     static Object res;  
     public static void main(String[] args) {
         
+        ////////////////////////////////////////////////////
+        // ARRAYS //
+        ///////////////////////////////////////////////////
+
         // res =twoSumBruteForce( new int[]{2 ,7,11,15}, 9);
         // if (res != null && res instanceof int[])   {
         //     int[] arrayResult = (int[]) res;
@@ -75,7 +82,15 @@ class Main {
         // int []res = twoSumII(new int[]{-1,0}, -1123);
         // printRes(res); 
 
-        List<List<Integer>> res = treeSum(new int[]{-1,0,1,2,-1,-4});        
+        // List<List<Integer>> res = treeSum(new int[]{-1,0,1,2,-1,-4});        
+        // printRes(res);
+
+
+        //////////////////////////////////////////////////////////////////////
+        //BINARY//
+        //////////////////////////////////////////////////////////////////////
+
+        int res = sumOfTwoInteger(2, 3); 
         printRes(res);
 
     }
