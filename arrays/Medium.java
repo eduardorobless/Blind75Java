@@ -1,6 +1,9 @@
 package arrays;
 import java.util.Map; 
 import java.util.HashMap; 
+import java.util.LinkedList; 
+import java.util.List;
+import java.util.Arrays;
 
 
 public class Medium {
@@ -146,10 +149,55 @@ public class Medium {
 
     }
 
-    // public static int treeSum(int[] nums)
-    // {
+    public static List<List<Integer>> treeSum(int[] nums)
+    {
+        Arrays.sort(nums);
+        // iterate sorted array then do two sum accordingly 
+        List<List<Integer>> output = new LinkedList<>(); 
 
-    // }
+        // sort 
+        // iterate array
+        // check for duplicates at zero greter indexes, if so skip loop  (increased vs before)
+        // get left and right pointer 
+        // get treesum and update pointers accodingly 
+        // if found triplet add it, and increase left pointer 
+        // check for  repeated left pointer ( increased vs berfore). if duplicate skip
+
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i-1] ) 
+                continue;                        // at second or greater iteration and nums of i same as num i - 1 
+            int left =  i + 1; 
+            int right = nums.length - 1; 
+
+            // another loop to apply two sum II to the other two elements 
+            while (left < right) {
+                int treeSum = nums[i] + nums[left] + nums[right]; 
+                if (treeSum < 0){
+                    left++; 
+                }
+                else if (treeSum > 0){
+                    right--;
+                }
+                else{
+                    output.add( List.of(nums[i], nums[left], nums[right])  ) ; 
+                    left++; 
+                    // check repeated left pointer 
+
+                    while (nums[left] == nums[left-1] &&  left < right) {
+                            left++;
+                    }
+                }
+            }
+
+        }
+
+    
+        return output;
+
+
+
+    }
     public static int containerWithMostWater(int[] nums) {
         int l = 0; 
         int r = nums.length -1; 

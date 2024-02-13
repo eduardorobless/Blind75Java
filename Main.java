@@ -1,7 +1,7 @@
 
 import static arrays.Easy.*; 
 import static arrays.Medium.*;
-
+import  java.util.List; 
 class Main {
     static Object res;  
     public static void main(String[] args) {
@@ -72,8 +72,11 @@ class Main {
         // printRes(res); 
         // int []res = twoSumII(new int[]{2,7,11,15}, 9);
         // printRes(res); 
-        int []res = twoSumII(new int[]{-1,0}, -1123);
-        printRes(res); 
+        // int []res = twoSumII(new int[]{-1,0}, -1123);
+        // printRes(res); 
+
+        List<List<Integer>> res = treeSum(new int[]{-1,0,1,2,-1,-4});        
+        printRes(res);
 
     }
 
@@ -85,6 +88,24 @@ class Main {
             for(int val : arrayResult) {
                  System.out.println(val);
             }
+        } else if(res != null && res instanceof List<?>) {
+            List<?> list = (List<?>) res; 
+
+            for(Object obj: list) {
+                if(obj instanceof List<?>) {
+                    List<?> innerList = (List<?>) obj; 
+                    for(Object innerObj : innerList) {
+                        if (innerObj instanceof Integer) {
+                            System.out.print(innerObj + " ");
+                        }
+           
+                    }
+
+                    System.out.println(); 
+                }
+            }
+        
+
         }
         else if(res != null && res instanceof Integer) {
             System.out.println(res); 
