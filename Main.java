@@ -90,7 +90,12 @@ class Main {
         //BINARY//
         //////////////////////////////////////////////////////////////////////
 
-        int res = sumOfTwoInteger(2, 3); 
+        // int res = sumOfTwoInteger(2, 3); 
+        // printRes(res);
+
+        // int res = numberOfOneBits(00000000000000000000000000001011); 
+        // printRes(res);
+        int res = numberOfOneBits(0b11111111111111111111111111111101); 
         printRes(res);
 
     }
