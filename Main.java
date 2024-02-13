@@ -1,5 +1,6 @@
 
 import static arrays.Easy.*; 
+import static arrays.Medium.*;
 
 class Main {
     static Object res;  
@@ -63,7 +64,15 @@ class Main {
 
 
         // int res = containerWithMostWater(new int[]{1,8,6,2,5,4,8,3,7});
-        int res = containerWithMostWater(new int[]{1,1});
+        // int res = containerWithMostWater(new int[]{1,1});
+        // printRes(res); 
+
+
+        // int []res = twoSumII(new int[]{2,3,4}, 6);
+        // printRes(res); 
+        // int []res = twoSumII(new int[]{2,7,11,15}, 9);
+        // printRes(res); 
+        int []res = twoSumII(new int[]{-1,0}, -1123);
         printRes(res); 
 
     }
