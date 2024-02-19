@@ -25,9 +25,21 @@ public class Easy{
         return output;
     }
 
-    // public static int missingNumber(int[] nums){
+    public static int missingNumber(int[] nums){
+        int missing = 0; 
 
-    // }
+
+        for(int i=0; i <= nums.length; i++) {
+            missing = missing ^ i;
+        }
+
+        for(int num: nums){
+            missing = missing ^ num;
+        }
+
+        return missing; 
+
+    }
 
 
     // public static int reverseBits(int n ){
