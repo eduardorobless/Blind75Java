@@ -15,9 +15,15 @@ public class Easy{
         return res; 
     }
 
-    // public static int[] countingBits(int n){
+    public static int[] countingBits(int n){
+        // use dp , we simply shift right and check if we have an odd or even number 
+        int [] output = new int[n + 1]; 
+        for(int i = 1; i <= n; i++) {
+            output[i] = output[i >> 1]  + i % 2; 
+        }
 
-    // }
+        return output;
+    }
 
     // public static int missingNumber(int[] nums){
 
