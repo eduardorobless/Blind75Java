@@ -105,9 +105,12 @@ class Main {
         // printRes(missingNumber);
         // int missingNumber = missingNumber(new int[] {0,1}); 
 
-        int missingNumber = missingNumber(new int[] {9,6,4,2,3,5,7,0,1} ); 
-        printRes(missingNumber);
+        // int missingNumber = missingNumber(new int[] {9,6,4,2,3,5,7,0,1} ); 
+        // printRes(missingNumber);
 
+
+        int reversed = reverseBits(51); 
+        printRes(Integer.toBinaryString(reversed));
     }
 
 
@@ -138,6 +141,9 @@ class Main {
 
         }
         else if(res != null && res instanceof Integer) {
+            System.out.println(res); 
+        }
+        else {
             System.out.println(res); 
         }
     } 
