@@ -3,6 +3,8 @@ import static arrays.Easy.*;
 import static arrays.Medium.*;
 import static binary.Easy.*;
 import static binary.Medium.*;
+import static dynamicprogramming.Easy.*; 
+import static dynamicprogramming.Medium.*;
 import  java.util.List; 
 
 class Main {
@@ -109,8 +111,15 @@ class Main {
         // printRes(missingNumber);
 
 
-        int reversed = reverseBits(51); 
-        printRes(Integer.toBinaryString(reversed));
+        // int reversed = reverseBits(51); 
+        // printRes(Integer.toBinaryString(reversed));
+        
+        //////////////////////////////////////////////////////////////////////
+        //DYNAMIC PROGRAMMING//
+        //////////////////////////////////////////////////////////////////////
+        
+        int res = climbStairs(5); 
+        printRes(res);
     }
 
 
