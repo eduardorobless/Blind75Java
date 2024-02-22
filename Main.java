@@ -118,7 +118,9 @@ class Main {
         //DYNAMIC PROGRAMMING//
         //////////////////////////////////////////////////////////////////////
         
-        int res = climbStairs(5); 
+        // int res = climbStairs(5); 
+        // printRes(res);
+        int res = coinChange(new int[]{1,2,5}, 11); 
         printRes(res);
     }
 
