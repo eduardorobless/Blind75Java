@@ -1,6 +1,6 @@
 package dynamicprogramming;
 import java.util.Arrays;
-
+import java.util.Optional; 
 
 public class Medium{
     public static int coinChange(int[] coins, int amount){
@@ -22,11 +22,47 @@ public class Medium{
             return -1;
         }
 
+    }     
+
+
+    public static int longestIncreasingSubsequence(int[] nums){
+        // dp approach
+        int[] res = new int[nums.length]; 
+        Arrays.fill(res, 1);
+
+
+        for (int i=1; i < nums.length; i++) {            
+            for(int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    res[i] = Math.max(res[i], 1 + res[j]);
+                }
+            }
+        }
+
+
+        int max = 0;
+        for(int i: res) {
+            if (i > max) {
+                max = i;
+            }
+        }
+
+        return max;
+
+        // // N ^ 2 solution looking for O logN 
+        // int[] dp = new int[nums.length]; 
+        // Arrays.fill(dp, 1); 
+
+        // // iterating backwards to get subproblems solved if conditions met 
+        // for(int i = nums.length - 1; i >= 0; i--) {
+        //     for(int j = i + 1; j < nums.length; j++) {
+        //         if (nums[i] < nums[j]) {
+        //             dp[i] = Math.max(dp[i], 1 + dp[j]); 
+        //         }
+        //     }
+        // }
+        // return Arrays.stream(dp).max().orElse(0);
     }
-
-    // public static int longestIncreasingSubsequence(int[] nums){
-
-    // }
 
     // public static int longestCommonSubsequece(String text1, String text2){
 

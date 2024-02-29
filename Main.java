@@ -7,6 +7,7 @@ import static dynamicprogramming.Easy.*;
 import static dynamicprogramming.Medium.*;
 import  java.util.List; 
 
+
 class Main {
     static Object res;  
     public static void main(String[] args) {
@@ -120,8 +121,12 @@ class Main {
         
         // int res = climbStairs(5); 
         // printRes(res);
-        int res = coinChange(new int[]{1,2,5}, 11); 
+        // int res = coinChange(new int[]{1,2,5}, 11); 
+        // printRes(res);
+
+        int res = longestIncreasingSubsequence(new int[]{3, 4, -1, 0, 6, 2, 3}); 
         printRes(res);
+ 
     }
 
 
