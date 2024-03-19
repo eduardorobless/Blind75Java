@@ -49,6 +49,7 @@ public class Medium{
 
         return max;
 
+
         // // N ^ 2 solution looking for O logN 
         // int[] dp = new int[nums.length]; 
         // Arrays.fill(dp, 1); 
@@ -64,9 +65,19 @@ public class Medium{
         // return Arrays.stream(dp).max().orElse(0);
     }
 
-    // public static int longestCommonSubsequece(String text1, String text2){
 
-    // }
+    static int lcsNoMemoization(int i, int j, String A, String B) {
+        if (i == A.length() || j == B.length())
+            return 0;   
+        else if (A.charAt(i) == B.charAt(j)) 
+            return 1 + lcsNoMemoization(i +1, j + 1, A, B); 
+        else
+            return Math.max(lcsNoMemoization(i+1, j, A, B), lcsNoMemoization(i, j+1, A, B) ); 
+    }
+
+    public static int longestCommonSubsequece(String text1, String text2){
+        return lcsNoMemoization(0, 0, text1, text2);
+    }
 
     // public static boolean wordBreak(String s, List<String> wordDict){
 
