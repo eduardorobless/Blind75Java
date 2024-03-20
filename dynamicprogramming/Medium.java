@@ -87,16 +87,16 @@ public class Medium{
 
         // create matrix for memoization 
           if (i == A.length() || j == B.length()) {
-            result = 0;   
             System.out.println("you are at null");
+            result = 0;   
           }
         else if (A.charAt(i) == B.charAt(j))  {
-            result = 1 + lcsMemoization(i +1, j + 1, A, B, memo); 
             System.out.println("you are at equals");
+            result = 1 + lcsMemoization(i +1, j + 1, A, B, memo); 
         }
         else {
-            result = Math.max(lcsMemoization(i+1, j, A, B, memo), lcsMemoization(i, j+1, A, B, memo) ); 
             System.out.println("you are at non equals");
+            result = Math.max(lcsMemoization(i+1, j, A, B, memo), lcsMemoization(i, j+1, A, B, memo) ); 
         }
 
         System.out.printf("result %d\n\n\n\n", result);
