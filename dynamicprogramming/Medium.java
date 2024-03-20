@@ -75,8 +75,45 @@ public class Medium{
             return Math.max(lcsNoMemoization(i+1, j, A, B), lcsNoMemoization(i, j+1, A, B) ); 
     }
 
+    static int lcsMemoization(int i, int j, String A, String B, Integer[][] memo) {
+        System.out.printf("i:  %s, j: %s \n", i, j);
+        System.out.printf("Memoization [i:%s, j:%s] = %d\n", i, j, memo[i][j]);
+
+        if (memo[i][j] != null) {
+            return memo[i][j];  // using memo
+        }
+
+        int result;
+
+        // create matrix for memoization 
+          if (i == A.length() || j == B.length()) {
+            result = 0;   
+            System.out.println("you are at null");
+          }
+        else if (A.charAt(i) == B.charAt(j))  {
+            result = 1 + lcsMemoization(i +1, j + 1, A, B, memo); 
+            System.out.println("you are at equals");
+        }
+        else {
+            result = Math.max(lcsMemoization(i+1, j, A, B, memo), lcsMemoization(i, j+1, A, B, memo) ); 
+            System.out.println("you are at non equals");
+        }
+
+        System.out.printf("result %d\n\n\n\n", result);
+
+
+        memo[i][j] = result; // memoize the result 
+        return result;
+    }
+
+
+
     public static int longestCommonSubsequece(String text1, String text2){
-        return lcsNoMemoization(0, 0, text1, text2);
+        //return lcsNoMemoization(0, 0, text1, text2);
+        Integer[][] memo = new Integer[text1.length() + 1][text2.length() + 1];
+
+        
+        return lcsMemoization(0, 0, text1, text2, memo);
     }
 
     // public static boolean wordBreak(String s, List<String> wordDict){

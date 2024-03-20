@@ -124,7 +124,12 @@ class Main {
         // int res = coinChange(new int[]{1,2,5}, 11); 
         // printRes(res);
 
-        int res = longestIncreasingSubsequence(new int[]{3, 4, -1, 0, 6, 2, 3}); 
+        // int res = longestIncreasingSubsequence(new int[]{3, 4, -1, 0, 6, 2, 3}); 
+        // printRes(res);
+
+
+        int res = longestCommonSubsequece("bd", "abcd");
+        //int res = longestCommonSubsequece("abcde", "ace");
         printRes(res);
  
     }
