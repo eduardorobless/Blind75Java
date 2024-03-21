@@ -128,7 +128,8 @@ class Main {
         // printRes(res);
 
 
-        int res = longestCommonSubsequece("bd", "abcd");
+        int res = longestCommonSubsequece("stone", "longest");
+        //int res = longestCommonSubsequece("bd", "abcd");
         //int res = longestCommonSubsequece("abcde", "ace");
         printRes(res);
  

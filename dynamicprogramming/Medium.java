@@ -75,6 +75,42 @@ public class Medium{
             return Math.max(lcsNoMemoization(i+1, j, A, B), lcsNoMemoization(i, j+1, A, B) ); 
     }
 
+
+    static int lcsBottomUpDP(String A, String B, int[][] memo) {
+        int m = A.length(); 
+        int n = B.length(); 
+        // do not change data
+        // use i, j for dp and do not change it
+        // choose simple of course is easier to just modify string indexes 
+        // substracting one to them.
+        
+        for(int i = 1; i <= m; i++) {
+            for(int j= 1; j <= n; j++) {
+                if (A.charAt(i - 1) == B.charAt(j - 1)) // if they are equal then get 1 plus diagonal 
+                    memo[i][j] = 1 + memo[i - 1][j - 1];
+                else 
+                    memo[i][j]= Math.max(memo[i - 1][j], memo[i][j-1] ); 
+                }
+        }   
+
+
+
+
+      for (int k = 0; k < memo.length; k++) {
+            for (int l = 0; l < memo[k].length; l++) {
+                System.out.print(memo[k][l] + " ");
+            }
+            System.out.println(); // Move to the next line for the next row
+        }
+
+
+
+        System.out.printf("m: %d, n: %d\n", m, n);
+
+                
+        return memo[m][n];
+    }
+
     static int lcsMemoization(int i, int j, String A, String B, Integer[][] memo) {
         System.out.printf("i:  %s, j: %s \n", i, j);
         System.out.printf("Memoization [i:%s, j:%s] = %d\n", i, j, memo[i][j]);
@@ -110,10 +146,10 @@ public class Medium{
 
     public static int longestCommonSubsequece(String text1, String text2){
         //return lcsNoMemoization(0, 0, text1, text2);
-        Integer[][] memo = new Integer[text1.length() + 1][text2.length() + 1];
-
-        
-        return lcsMemoization(0, 0, text1, text2, memo);
+        //Integer[][] memo = new int[text1.length() + 1][text2.length() + 1];
+        //return lcsMemoization(0, 0, text1, text2, memo);
+        int[][] memo = new int[text1.length() + 1][text2.length() + 1];        
+        return lcsBottomUpDP(text1, text2, memo); 
     }
 
     // public static boolean wordBreak(String s, List<String> wordDict){
