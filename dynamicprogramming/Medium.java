@@ -1,7 +1,10 @@
 package dynamicprogramming;
 import java.util.Arrays;
 import java.util.Optional; 
-
+import java.util.List;
+import java.util.ArrayList; 
+import java.util.HashMap;
+import java.util.Map;
 public class Medium{
     public static int coinChange(int[] coins, int amount){
         int [] dp = new int[amount +1]; 
@@ -139,7 +142,7 @@ public class Medium{
 
 
         memo[i][j] = result; // memoize the result 
-        return result;
+        return result;  
     }
 
 
@@ -152,9 +155,87 @@ public class Medium{
         return lcsBottomUpDP(text1, text2, memo); 
     }
 
-    // public static boolean wordBreak(String s, List<String> wordDict){
+    
 
-    // }
+    /*
+    1, Loop trough the dictionary and check if we can match a word from the dictionary with s
+        1. If we can, we splice off the word from the beginning of s and make a recursive call with the shortened s.
+        2. If not, we move onto the next word.
+    2. If we make it trough the dictionary and cannot match a word, we return false. But if at any time a recursive call returned true, we return true.
+    3. Base case is if the string is empty in which case, we return true.
+    */
+ 
+    public static boolean wordBreakNoMemo(String s, List<String> wordDict) {
+        
+        if (s.length() == 0)
+            return true;              
+        for (String word: wordDict) {
+   
+            try {
+                String prefix = s.substring(0, word.length()); // get substring to match in string based on dictionary entry
+                boolean result = false; 
+
+                if (prefix.equals(word)) 
+                    result = wordBreakNoMemo(s.substring(word.length()), wordDict); 
+                if (result) 
+                    return true;  
+            } catch(StringIndexOutOfBoundsException e) {
+                continue;
+            } finally{
+                System.out.printf(" entering  \n");
+                continue;
+            }
+
+        }
+
+        return false;
+
+    }
+
+
+
+    // adding memo to the word break problem allows us to decresae 
+    // time complexity
+
+    public static boolean wordBreakMemo(String s, List<String> wordDict, Map<String, Boolean> memo) {
+        System.out.println(s);
+           // Print keys and values
+        for (Map.Entry<String, Boolean> entry : memo.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+        if (s.length() == 0) {
+            return true;
+        }
+        else if (memo.containsKey(s)) {
+            return memo.get(s);
+        }
+     
+        for (String word: wordDict) {
+        
+            if (word.length() > s.length()) 
+                continue;
+                
+    
+            if (s.substring(0, word.length()).equals(word) && wordBreakMemo(s.substring(word.length()), wordDict, memo)) {
+                memo.put(s, true);
+               
+                return true;         
+            }
+
+           
+        }
+
+        //before returning false
+        memo.put(s, false);
+        return false;
+    }
+
+    public static boolean wordBreak(String s, List<String> wordDict){
+        // create memo using a hashmap data structure 
+        Map<String, Boolean> memo = new HashMap<>();
+        return wordBreakMemo(s, wordDict, memo);
+        //return wordBreakNoMemo(s, wordDict);
+    }
 
     // public static List<List<Integer>> combinationSum(int[] candidates, int target){
 

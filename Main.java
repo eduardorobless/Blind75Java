@@ -6,8 +6,8 @@ import static binary.Medium.*;
 import static dynamicprogramming.Easy.*; 
 import static dynamicprogramming.Medium.*;
 import  java.util.List; 
-
-
+import java.util.ArrayList; 
+import java.util.Arrays; 
 class Main {
     static Object res;  
     public static void main(String[] args) {
@@ -128,11 +128,14 @@ class Main {
         // printRes(res);
 
 
-        int res = longestCommonSubsequece("stone", "longest");
-        //int res = longestCommonSubsequece("bd", "abcd");
-        //int res = longestCommonSubsequece("abcde", "ace");
+        // int res = longestCommonSubsequece("stone", "longest");
+        // //int res = longestCommonSubsequece("bd", "abcd");
+        // //int res = longestCommonSubsequece("abcde", "ace");
+        // printRes(res);
+
+        
+        boolean res = wordBreak("abcdefgh", new ArrayList<String>(Arrays.asList("ab", "cd", "abcd", "h"))); 
         printRes(res);
- 
     }
 
 
