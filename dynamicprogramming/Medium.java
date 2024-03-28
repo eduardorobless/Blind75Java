@@ -164,7 +164,8 @@ public class Medium{
     2. If we make it trough the dictionary and cannot match a word, we return false. But if at any time a recursive call returned true, we return true.
     3. Base case is if the string is empty in which case, we return true.
     */
- 
+     // time complexity O(2^N)
+    // space complexity O(M) where M is the length of the string; as we are using recursion we need to take into account the depth.
     public static boolean wordBreakNoMemo(String s, List<String> wordDict) {
         
         if (s.length() == 0)
@@ -194,9 +195,12 @@ public class Medium{
 
 
 
-    // adding memo to the word break problem allows us to decresae 
-    // time complexity
+    // Adding memo to the word break problem allows us to decresae 
 
+    //  TIME COMPLEXITY O(N^2 * N) ;recursion subproblems, N substring complexity
+    //  SPACE COMPLEXITY (2^M); where m is the length of the input string s, taking into consideration other factors 
+    //  such as the space took by the recursive stack being m and the dictionary being n, the memoization table is
+    // the one that has more weight
     public static boolean wordBreakMemo(String s, List<String> wordDict, Map<String, Boolean> memo) {
         System.out.println(s);
            // Print keys and values
