@@ -234,6 +234,47 @@ public class Medium{
         return false;
     }
 
+
+
+
+    // Now, using DP Bottom up strategy; or to the friends using solution of smaller problems to solve larger problemss 
+
+    // Strategy: 
+    // Allocate an array (dp table) for each character in string plus one, as each location indicates: 
+    // Can you form the string ending in that position with the words in the dictionary? 
+    // intiate the first position with true, as per default we can always form the empty string
+    // iterate: 
+        // use two pointers; one point er starting from 1 up to string length  + 1, this is to check new substrings 
+        // and anoter pointer (for checking previous solutions) starting one position before up to zero position, when you find a match for both expressions return and set it to true
+    // las position of the dp table represent if we can form the string using the dictionary, so we return it to the end  
+
+
+    // TIME COMPLEXITY O(N^2)
+    // SPACE COMPLEXITY O(N)
+    public static boolean wordBreakDP(String s, List<String> wordDict) {
+        int sLen = s.length();
+        boolean[] dpTable = new boolean[sLen + 1];
+        dpTable[0] = true;
+
+
+
+        for(int i = 1; i <= sLen; i++) {
+            for (int j = i-1 ; j > -1; j--) {
+                if(dpTable[j] && wordDict.contains(s.substring(j, i))) {
+                    dpTable[i]= true;
+                    break;
+                } 
+            }
+        }
+
+
+        System.out.println("DP TABLE");
+        for(boolean val: dpTable) 
+            System.out.println(val);
+        System.out.println("DP TABLE");
+        return dpTable[sLen];
+    }
+
     public static boolean wordBreak(String s, List<String> wordDict){
         // create memo using a hashmap data structure 
         Map<String, Boolean> memo = new HashMap<>();

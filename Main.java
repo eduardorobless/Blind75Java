@@ -134,7 +134,8 @@ class Main {
         // printRes(res);
 
         
-        boolean res = wordBreak("abcdefgh", new ArrayList<String>(Arrays.asList("ab", "cd", "abcd", "h"))); 
+        //boolean res = wordBreak("abcdefgh", new ArrayList<String>(Arrays.asList("ab", "cd", "abcd", "h"))); 
+        boolean res = wordBreakDP("abcdef", new ArrayList<String>(Arrays.asList("ab", "cd", "ef")));
         printRes(res);
     }
 
