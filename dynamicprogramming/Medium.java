@@ -277,9 +277,10 @@ public class Medium{
 
     public static boolean wordBreak(String s, List<String> wordDict){
         // create memo using a hashmap data structure 
-        Map<String, Boolean> memo = new HashMap<>();
-        return wordBreakMemo(s, wordDict, memo);
+        //Map<String, Boolean> memo = new HashMap<>();
+        //return wordBreakMemo(s, wordDict, memo);
         //return wordBreakNoMemo(s, wordDict);
+        return wordBreakDP(s, wordDict);
     }
 
     // public static List<List<Integer>> combinationSum(int[] candidates, int target){
