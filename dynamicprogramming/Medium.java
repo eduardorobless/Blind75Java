@@ -171,24 +171,11 @@ public class Medium{
         if (s.length() == 0)
             return true;              
         for (String word: wordDict) {
-   
-            try {
-                String prefix = s.substring(0, word.length()); // get substring to match in string based on dictionary entry
-                boolean result = false; 
-
-                if (prefix.equals(word)) 
-                    result = wordBreakNoMemo(s.substring(word.length()), wordDict); 
-                if (result) 
-                    return true;  
-            } catch(StringIndexOutOfBoundsException e) {
-                continue;
-            } finally{
-                System.out.printf(" entering  \n");
-                continue;
-            }
-
-        }
-
+            if (s.startsWith(word)) { // instead of extracting prefix from string check directly is string match with word dictionary word
+                if(wordBreakNoMemo(s.substring(word.length()), wordDict)) 
+                return true;
+            }            
+        }    
         return false;
 
     }
@@ -280,16 +267,71 @@ public class Medium{
         //Map<String, Boolean> memo = new HashMap<>();
         //return wordBreakMemo(s, wordDict, memo);
         //return wordBreakNoMemo(s, wordDict);
-        return wordBreakDP(s, wordDict);
+         return wordBreakDP(s, wordDict);
     }
 
-    // public static List<List<Integer>> combinationSum(int[] candidates, int target){
 
-    // }
+
+    // Strategy
+    // Use a DFS backtracking solution
+    // keep track of current index being iterated
+    // keeep track of current combination elements
+    // kepp track of current combination array solution
+    // STILL PENDING TIME AND SPACE COMPLEXITY
+    // THIS IS MORE A BACKTRACKING PROBLEM RATHER THAN A DP ONE.
+    public static List<List<Integer>> combinationSumDFS(int[] candidates, int target, int index, List<Integer> cur, List<List<Integer>> combinations){ 
+        // set base case    
+        // base case is when we return, we return when target condition is less or equal to zero 
+        // also add to combinations when target is equal to 0 
+        if (target <= 0) {
+            if (target == 0) 
+                combinations.add(new ArrayList<>(cur)); 
+            return null;
+        }
+
+        // iterative calls within restriction of index in range
+        if (index < candidates.length) {
+            // recursive call substrating
+            // pushing element 
+            cur.add(candidates[index]);
+            combinationSumDFS(candidates, target - candidates[index], index, cur, combinations);
+            // popping element
+            cur.remove(cur.size() - 1);  // remove last element
+            // calling recursive without substracting
+            combinationSumDFS(candidates, target, index + 1, cur, combinations); 
+        }
+
+
+        return combinations;
+    }
+
+
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+        int index = 0; 
+
+        List<Integer> cur = new ArrayList<>();
+        List<List<Integer>> combinations= new ArrayList<>();
+
+        return combinationSumDFS(candidates, target, 0, cur, combinations); 
+    }
     
-    // public static int houseRobber(int[] nums){
+    // STRATEGY: 
+    // DP APPROACH 
+    // TIME COMPLEXITY: O(N)
+    // SPACE COMPLEXITY: O(N)
+    public static int houseRobber(int[] nums){
+        if(nums.length == 0) return 0;
+        int dp[] = new int[nums.length+1];
 
-    // }
+        dp[0]=0; 
+        dp[1]= nums[0]; 
+
+        for(int i = 1; i< nums.length; i++) {
+            dp[i+1] = Math.max(dp[i], dp[i-1] + nums[i]);
+        }
+
+        return dp[nums.length];
+    }
     
     // public static int houseRobberII(int[] nums){
 

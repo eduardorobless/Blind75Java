@@ -135,7 +135,14 @@ class Main {
 
         
         //boolean res = wordBreak("abcdefgh", new ArrayList<String>(Arrays.asList("ab", "cd", "abcd", "h"))); 
-        boolean res = wordBreak("abcdef", new ArrayList<String>(Arrays.asList("ab", "cd", "ef")));
+        // boolean res = wordBreak("abcdefg", new ArrayList<String>(Arrays.asList("ab", "cd", "efg")));
+        // printRes(res);
+
+        // List<List<Integer>> res = combinationSum(new int[]{2, 3, 6, 7}, 7); 
+        // printRes(res);
+
+        //int res = houseRobber(new int[]{1,2,3,1});
+        int res = houseRobber(new int[] {2,7,9,3,1});
         printRes(res);
     }
 
