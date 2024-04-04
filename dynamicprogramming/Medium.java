@@ -314,6 +314,7 @@ public class Medium{
 
         return combinationSumDFS(candidates, target, 0, cur, combinations); 
     }
+
     
     // STRATEGY: 
     // DP APPROACH 
@@ -321,6 +322,7 @@ public class Medium{
     // SPACE COMPLEXITY: O(N)
     public static int houseRobber(int[] nums){
         if(nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
         int dp[] = new int[nums.length+1];
 
         dp[0]=0; 
@@ -331,11 +333,22 @@ public class Medium{
         }
 
         return dp[nums.length];
-    }
+    } 
     
-    // public static int houseRobberII(int[] nums){
 
-    // }
+    // STRATEGY: 
+    // DP APPROACH 
+    // REUSE HOUSE ROBBER TAKING INTO ACCOUNT: 
+    // 1-If we pick the first house skip last one 
+    // 2-If we pick the last house skp first one
+    public static int houseRobberII(int[] nums){
+        int max1 = houseRobber(Arrays.copyOfRange(nums, 0, nums.length - 1));
+        int max2 = houseRobber(Arrays.copyOfRange(nums, 1, nums.length));
+
+
+        return Math.max(max1, max2);
+
+    }
     
     // public static int decodeWays(String s){
 

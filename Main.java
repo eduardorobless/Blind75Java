@@ -142,7 +142,15 @@ class Main {
         // printRes(res);
 
         //int res = houseRobber(new int[]{1,2,3,1});
-        int res = houseRobber(new int[] {2,7,9,3,1});
+        //int res = houseRobber(new int[] {2,7,9,3,1});
+
+
+
+
+        // int res = houseRobberII(new int[] {2,3,2});
+        
+        //int res = houseRobberII(new int[] {1,2,3,1});
+        int res = houseRobberII(new int[] {1,2,3});
         printRes(res);
     }
 
