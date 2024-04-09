@@ -150,7 +150,11 @@ class Main {
         // int res = houseRobberII(new int[] {2,3,2});
         
         //int res = houseRobberII(new int[] {1,2,3,1});
-        int res = houseRobberII(new int[] {1,2,3});
+        // int res = houseRobberII(new int[] {1,2,3});
+
+        int res = decodeWays("122016");
+        //int res = decodeWays("06");
+        //int res = decodeWays("10");
         printRes(res);
     }
 

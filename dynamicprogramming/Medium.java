@@ -221,7 +221,7 @@ public class Medium{
         return false;
     }
 
-
+  
 
 
     // Now, using DP Bottom up strategy; or to the friends using solution of smaller problems to solve larger problemss 
@@ -350,9 +350,46 @@ public class Medium{
 
     }
     
-    // public static int decodeWays(String s){
+    // STRATEGY: 
+    // IN THIS CHALLENGE WE HAVE THE FOLLOWING POSSIBLE SCENARIOS: 
+    // 1 - number of i and i -1 between 10 and 26
+    // 2 - number of i and i - 1 larger than 26
+    // 3 - number of i == 0 and i - 1 == 1 or i - 1 == 2 
+    // 4 - number of i == 0 and i - 1 > 2
 
-    // }
+
+
+    // STRATEGY
+
+    // BRUTE FORCE
+    // RECURSIVELY DECODE ONE OR TWO CHRACTERS FROM STRINGS UNTIL ALL POSSIBLE WAYS ARE VISITED, DFS 
+    // ADD +1 TO COUNT OF WAYS IF WE GET EMPTY STRING
+
+
+    public static int decodeWaysNoMemoHelper(String s) {
+        if (s.isEmpty()) return 1;
+        if (s.startsWith("0")) return 0;
+        
+        int ways = decodeWaysNoMemoHelper(s.substring(1));
+        if (s.length() >= 2 && Integer.parseInt(s.substring(0, 2)) <= 26) {
+            ways += decodeWaysNoMemoHelper(s.substring(2));
+        }
+        
+        return ways;
+    }
+
+    public static int decodeWaysNoMemo(String s) {
+        if (s.isEmpty()) return 0;
+        return decodeWaysNoMemoHelper(s);
+    }
+
+    public static int decodeWays(String s) {
+        return decodeWaysNoMemo(s);
+    }
+
+
+}
+
 
     // public static int uniquePaths(int m, int n){
 
@@ -362,4 +399,3 @@ public class Medium{
         
     // }
     
-}
