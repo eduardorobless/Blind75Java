@@ -366,6 +366,32 @@ public class Medium{
     // ADD +1 TO COUNT OF WAYS IF WE GET EMPTY STRING
 
 
+    //memo will consist of hash like structure where key is the substring and the values are the number of ways
+    public static int decodeWaysMemoHelper(String s, Map<String, Integer> memo ) {
+    
+        // check memo and return value from memo without re-doing process
+        if (memo.containsKey(s)) {
+
+            for(Map.Entry<String, Integer> entry: memo.entrySet()) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
+
+            return memo.get(s); 
+        }
+
+        if (s.isEmpty()) return 1;
+        if (s.startsWith("0")) return 0;
+        
+        int ways = decodeWaysMemoHelper(s.substring(1), memo);
+        // store number of ways into memo 
+        if (s.length() >= 2 && Integer.parseInt(s.substring(0, 2)) <= 26) {
+            ways += decodeWaysMemoHelper(s.substring(2), memo   );
+        }
+
+        memo.put(s, ways); 
+        return ways;
+    }
+
     public static int decodeWaysNoMemoHelper(String s) {
         if (s.isEmpty()) return 1;
         if (s.startsWith("0")) return 0;
@@ -383,8 +409,17 @@ public class Medium{
         return decodeWaysNoMemoHelper(s);
     }
 
+
+    public static int decodeWaysMemo(String s) {
+        if (s.isEmpty()) return 0; 
+
+        Map<String, Integer> memo = new HashMap<>();
+        return decodeWaysMemoHelper(s, memo);
+    }
+
     public static int decodeWays(String s) {
-        return decodeWaysNoMemo(s);
+        //return decodeWaysNoMemo(s);
+        return decodeWaysMemo(s);
     }
 
 
