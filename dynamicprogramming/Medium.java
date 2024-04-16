@@ -366,6 +366,8 @@ public class Medium{
     // ADD +1 TO COUNT OF WAYS IF WE GET EMPTY STRING
 
 
+
+
     //memo will consist of hash like structure where key is the substring and the values are the number of ways
     public static int decodeWaysMemoHelper(String s, Map<String, Integer> memo ) {
     
@@ -417,9 +419,49 @@ public class Medium{
         return decodeWaysMemoHelper(s, memo);
     }
 
+
+
+    // based on the induction proof we have that 
+    // waysToDecode[i] = waysToDecode[i-1] (if new single digit is valid) + waysToDecode[i-2] (if last 2 digits are valid)
+    public static int decodeWaysDPHelper(String s) {
+        int n = s.length();
+        // crate or dp array 
+        int[] dp = new int[n+1]; 
+        dp[0] = 1; // zeroth element is 1 , because if input string is empty you return 1
+        dp[1] = s.charAt(0) == '0' ? 0 : 1; 
+
+        for(int i=2; i <= n; i++) {
+
+            int oneDigit = Integer.valueOf(s.substring(i-1, i));
+            int twoDigit = Integer.valueOf(s.substring(i-2, i)); 
+
+            // check if first digit is valid and add to the result 
+
+            if(oneDigit >=1) 
+                dp[i] += dp[i-1]; 
+
+            // check if second digit is valid and add it to the result
+
+            if (twoDigit >= 10 && twoDigit <= 26) 
+                dp[i] += dp[i-2]; 
+
+            
+    
+        }
+
+        return dp[n];
+    }
+
+    public static int decodeWaysDP(String s) {
+        if (s.isEmpty()) return 0; 
+
+        return decodeWaysDPHelper(s);
+    }
+
     public static int decodeWays(String s) {
         //return decodeWaysNoMemo(s);
-        return decodeWaysMemo(s);
+        //return decodeWaysMemo(s);
+        return decodeWaysDP(s);
     }
 
 
