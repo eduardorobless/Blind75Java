@@ -473,13 +473,44 @@ public class Medium{
             return 1;         
         else if(i == m || j == n) 
             return 0; 
-        else
-            return uniquePathsNoMemo(i, j+1, m, n) +  uniquePathsNoMemo(i+1, j, m, n);        
+        else {
+            return uniquePathsNoMemo(i, j+1, m, n) +  uniquePathsNoMemo(i+1, j, m, n); 
+        }
+             
+    }
+
+
+    public static int uniquePathsMemo(int i, int j, int m, int n, Map<String, Integer> memo) {
+
+
+        // case base
+        if(i == m - 1 && j == n - 1)  
+            return 1;         
+        else if(i == m || j == n) 
+            return 0; 
+    
+            String xKey = String.valueOf(i) + String.valueOf(j+1);
+            String yKey = String.valueOf(i+1) + String.valueOf(j); 
+            int x =   memo.containsKey(xKey) ? memo.get(xKey) : uniquePathsMemo(i, j+1, m, n, memo);
+            memo.put(xKey, x);
+            int y =  memo.containsKey(yKey) ? memo.get(yKey) : uniquePathsMemo(i+1, j, m, n, memo);
+            memo.put(yKey, y);
+        
+            // check memo     
+
+
+          
+        return  x + y;           
     }
 
     public static int uniquePaths(int m, int n){
 
-        return uniquePathsNoMemo(0, 0, m, n); 
+        //return uniquePathsNoMemo(0, 0, m, n); 
+        
+
+        // create key pair structue for memo
+        Map<String,Integer> memo = new HashMap<>();
+        return uniquePathsMemo(0, 0, m, n, memo);
 
     }
 
