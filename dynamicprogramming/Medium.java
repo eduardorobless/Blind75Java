@@ -464,15 +464,29 @@ public class Medium{
         return decodeWaysDP(s);
     }
 
+    // APPROACH 
+    // We can make a recursive top bottom approach like this
+    // recursive call result[i][j] = result[i][j+1] + result[i+1][j]
+    public static int uniquePathsNoMemo(int i, int j, int m, int n) {
+        // case base
+        if(i == m - 1 && j == n - 1)  
+            return 1;         
+        else if(i == m || j == n) 
+            return 0; 
+        else
+            return uniquePathsNoMemo(i, j+1, m, n) +  uniquePathsNoMemo(i+1, j, m, n);        
+    }
 
-}
+    public static int uniquePaths(int m, int n){
 
+        return uniquePathsNoMemo(0, 0, m, n); 
 
-    // public static int uniquePaths(int m, int n){
-
-    // }
+    }
 
     // public static boolean jumpGame(int[] nums){
         
     // }
     
+}
+
+
