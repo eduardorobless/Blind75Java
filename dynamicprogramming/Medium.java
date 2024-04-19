@@ -503,20 +503,47 @@ public class Medium{
         return  x + y;           
     }
 
+    // Approach, TOP DOWN DP
+    // create matrix mxn
+    // iterate from start to robot, so possible moves are only up and left
+    // so first col and first row can only have one direction; to wach for boundaries 
+    // other cells just sum the up and left
+    // return last cell 
+    // time complexity O(N)
+    // space complexity O(MxN)
+    public static int uniquePathsDP(int m, int n) {
+        int dp[][] = new int[m][n];
+        for(int i=0; i < m;  i++) {
+            for(int j= 0; j < n; j++) {
+                if (i == 0 || j == 0) 
+                    dp[i][j] = 1; 
+                else    
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1];         
+            }
+        }
+        return dp[m-1][n-1];
+    }
+
+
     public static int uniquePaths(int m, int n){
 
         //return uniquePathsNoMemo(0, 0, m, n); 
         
 
         // create key pair structue for memo
-        Map<String,Integer> memo = new HashMap<>();
-        return uniquePathsMemo(0, 0, m, n, memo);
+        // Map<String,Integer> memo = new HashMap<>();
+        // return uniquePathsMemo(0, 0, m, n, memo);
 
+
+        return uniquePathsDP(m, n); 
     }
 
-    // public static boolean jumpGame(int[] nums){
+
+
+
+    public static boolean jumpGame(int[] nums){
         
-    // }
+    }
     
 }
 
