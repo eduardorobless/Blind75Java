@@ -540,9 +540,18 @@ public class Medium{
 
 
 
-
+    // approach: Use greedy sub-dp approach
+    // calculate reachability from each index until we can no longer reach another position
     public static boolean jumpGame(int[] nums){
-        
+        int reachability = 0; 
+
+        for(int i=0; i < nums.length; i++) {
+            if(i > reachability) 
+                return false; 
+            else 
+                reachability = Math.max(reachability, i + nums[i]);
+        }
+        return true;       
     }
     
 }
