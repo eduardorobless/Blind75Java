@@ -156,8 +156,8 @@ class Main {
         //int res = decodeWays("06");
         //int res = decodeWays("10");
 
-        int res = uniquePaths(3, 7);
-        printRes(res);
+        // int res = uniquePaths(3, 7);
+        // printRes(res);
     }
 
 

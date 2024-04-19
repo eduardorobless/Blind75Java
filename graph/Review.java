@@ -14,9 +14,10 @@ class Node {
 class CityNode {
     String name; 
     static int value = 0; 
+    int index;
     CityNode(String name) {
         this.name = name; 
-        this.value = value++;
+        this.index = value++;
     }
 }
 
@@ -42,7 +43,7 @@ class GraphCities {
 
     public int getCityIndex(String city) {
         if (cities.containsKey(city)) { 
-            return cities.get(city).value;
+            return cities.get(city).index;
         } else {
             return -1;
         }
@@ -80,7 +81,9 @@ class GraphCities {
 
         if(!src.isEmpty() && !dst.isEmpty()) {
             srcIndex = getCityIndex(src); 
+            System.out.printf("source index: " + srcIndex + "\n");
             dstIndex = getCityIndex(dst); 
+            System.out.printf("dest index: " + dstIndex + "\n");
         } else {
             System.out.println("Provide citie's names"); 
             return false;
@@ -219,7 +222,7 @@ public class Review {
         graphCities.addEdge("Oslo", "Bergen");
 
         System.out.println(graphCities.checkEdge("Oslo", "Bergen"));
-
+        System.out.println(graphCities.checkEdge("Bergen", "Oslo"));
 
     }
 }
