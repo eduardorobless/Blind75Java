@@ -30,7 +30,7 @@ class GraphCities {
 
     GraphCities(int size) {
         matrix = new int[size][size]; 
-        cities = new HashMap<String, CityNode>(); 
+        cities = new LinkedHashMap<String, CityNode>(); 
     }
 
 
@@ -81,9 +81,9 @@ class GraphCities {
 
         if(!src.isEmpty() && !dst.isEmpty()) {
             srcIndex = getCityIndex(src); 
-            System.out.printf("source index: " + srcIndex + "\n");
+            //System.out.printf("source index: " + srcIndex + "\n");
             dstIndex = getCityIndex(dst); 
-            System.out.printf("dest index: " + dstIndex + "\n");
+            //System.out.printf("dest index: " + dstIndex + "\n");
         } else {
             System.out.println("Provide citie's names"); 
             return false;
@@ -97,6 +97,28 @@ class GraphCities {
             return false;
         }
 
+    }
+
+
+
+    public void print() {
+        //String padded = String.format("")
+        System.out.printf("%-20s", "");
+         cities.forEach((key, value) -> {
+            System.out.printf("%-20s",key);
+        });
+        
+        System.out.println();
+        cities.forEach((key, value) -> {
+            System.out.printf("%-20s", key);
+
+            cities.forEach((innerKey, innerValue) -> {
+                System.out.printf("%-20s", checkEdge(key, innerKey));            
+            });
+
+            System.out.println("\n");
+
+        });
     }
 
 
@@ -204,9 +226,6 @@ public class Review {
 
 
         // System.out.println(graph.checkEdge(3, 2));
-
-
-
         GraphCities graphCities = new GraphCities(10);  // allocating 10 cities 
         graphCities.addNode("Amsterdam"); 
         graphCities.addNode("Berlin"); 
@@ -217,12 +236,14 @@ public class Review {
 
 
         // ADDING CONNECTIONS 
-
-
         graphCities.addEdge("Oslo", "Bergen");
+        // System.out.println(graphCities.checkEdge("Oslo", "Bergen"));
+        // System.out.println(graphCities.checkEdge("Bergen", "Oslo"));
 
-        System.out.println(graphCities.checkEdge("Oslo", "Bergen"));
-        System.out.println(graphCities.checkEdge("Bergen", "Oslo"));
+        
+        // Iterate nodes 
+        // check edge on each node based
+        graphCities.print();
 
     }
 }
