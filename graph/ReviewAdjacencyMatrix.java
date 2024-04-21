@@ -3,12 +3,12 @@ package graph;
 import java.util.*;
 
 
-class Node {
-    char data; 
-    Node(char data) {
-        this.data = data; 
-    }    
-}
+// class Node {
+//     char data; 
+//     Node(char data) {
+//         this.data = data; 
+//     }    
+// }
 
 
 class CityNode {
@@ -99,8 +99,6 @@ class GraphCities {
 
     }
 
-
-
     public void print() {
         //String padded = String.format("")
         System.out.printf("%-20s", "");
@@ -121,9 +119,6 @@ class GraphCities {
         });
     }
 
-
-
-
     // public void print() {
     //     System.out.printf("\t");
     //     for(Cities node: nodes) {
@@ -141,9 +136,6 @@ class GraphCities {
     //         System.out.println();
     //     }
     // }
-
-
-
 }
 
 class Graph {
@@ -195,7 +187,7 @@ class Graph {
 
 
 
-public class Review {
+public class ReviewAdjacencyMatrix {
     public static void AdjacencyMatrix() {
 
     }
