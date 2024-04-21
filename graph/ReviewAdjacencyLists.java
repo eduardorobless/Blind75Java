@@ -12,7 +12,11 @@ class Node {
 }
 /* An adejacency list is a list/arraylist of linkedlist: 
 Each node gets a linked list and is added at the head. 
-Connectitvy to other node happens at the tail of that arraylist*/
+Connectitvy to other node happens at the tail of that arraylist
+
+Time complexity: O(V)
+Space complexity: O(V + E)
+*/
 class Graph {
     ArrayList<LinkedList<Node>> alist; 
      
