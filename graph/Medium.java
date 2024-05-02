@@ -19,6 +19,9 @@ class Node {
 
 public class Medium {
     /**       Clone graph 
+     * 
+     * 
+     * 
      *  Proposal 
      * 
      * To clone a graph you can either use DFS OR BFS. We use DFS for simplicity. 
@@ -39,6 +42,23 @@ public class Medium {
      * If they are in the map, then add it to the current node's neighbours relationship. Otherwise 
      * crete node recursively and add it to the map
      * 5 - Return new first node
+     * 
+     * Time Complexity:
+
+        Building the Graph: O(V + E)
+        Cloning the Graph (DFS): O(V + E)
+        Traversing Nodes (DFS): O(V + E)
+        Space Complexity:
+
+        Building the Graph: O(V + E)
+        Cloning the Graph (DFS): O(V + E)
+        Traversing Nodes (DFS): O(V)
+        Overall Complexity:
+
+        Time Complexity: O(V + E)
+        Space Complexity: O(V + E)
+
+
      */
     private static Node cloneUtil(Node node, HashMap<Node, Node> map) {
         // 2
