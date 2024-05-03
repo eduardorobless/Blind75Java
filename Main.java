@@ -166,7 +166,13 @@ class Main {
         // int res = uniquePaths(3, 7);
         // printRes(res);
 
-        cloneGraphSetup();
+
+        ////////////////////////////////////////////////////// GRAPHS ////////////////////////////////////////////////////////
+        //cloneGraphSetup();
+        
+        printRes(courseScheduleSetup());
+        
+
     }
 
 
