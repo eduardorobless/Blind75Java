@@ -276,7 +276,7 @@ public class Medium {
             visited = new boolean[numCourses]; 
             explored = new boolean[numCourses];
 
-            // adding graph relationships based on dependecies array 
+            // adding graph relationships based on dependecies array
             for(int i = 0; i < prerequisites.length; i++) {
                 adj[prerequisites[i][0]].add(prerequisites[i][1]);
             }
@@ -310,6 +310,57 @@ public class Medium {
     }
 
 
+
+
+    /** Number of Connect Components in a Undirected Graph
+     * 
+     * 
+     * 
+     * Strategy 
+     *  To solve this challenge we need to use the useful union-find datastructure
+     *  which will help us to count the number of connected ccomponents in a undirected graph in a performant 
+     *  way, even better that just using DFS, this is for space complexity and is almost as performant than DFS
+     *  in time complexity.
+     * 
+     * 
+     * Time Complexity
+     * 
+     * Space Complexity
+     * 
+     * Union Operation with Path Compression and Rank
+     *  Objective: Develop and operation that allows merging two disjoint components based on the union of two vertices 
+     *  belonging to those sets. 
+     *  
+     *  Aproach: 
+     *  1-Start with two elements 'x' and 'y' that need to be united into the same set.
+     *  2-Find the root of the set containing element 'x' using the 'Find(x)' function with path compression.
+     *  Store the result in 'root_x'
+     *  3-Find the root of the set containing element 'y' using the 'Find(y)' function with path compression.
+     *  Store the result in 'root_y'
+     *  4-If 'root_x' equals 'root_y', the elements 'x' and 'y' are already in the same set. Return from the function 
+     *  without performing any further actions.
+     *  5-If the rank of 'root_x' is less than the rank of 'root_y', set the parent of 'root_x' to 'root_y'. 
+     *  Otherwise, if the rank of 'root_x' is greater than the rank of 'root_y', se the parent of 'root_y' to 'root_x'. 
+     *  If the ranks are equal, set the parent of 'root_y' to 'root_x' and increment the rank of 'root_x'
+     *  6-Apply path compression for the elements along the path from 'x' to 'root x' by updating their parents to 'root_x'
+     *  7-Apply path compression for the elements along the path from 'y' to 'root y' by updating their parents to 'root y'
+     *  8-The union operation is now complete
+     * 
+     * Find Operation with Path Compression and Rank
+     *  Objective: Find the root of a given vertice.
+     * 
+     *  Approach: 
+     *  1-Start with an element 'x' for which the root needs to be found.
+     *  2-Check if the parent of 'x' is equa to 'x'. If true, 'x' is the root of its set, and the find operation is complete.
+     *  3-If the parent of 'x' is not equal to 'x', indicating that 'x' is not the root of its set, recursiveltyy call the 'Find'
+     *  function on the parent of 'x'. 
+     *  4-During the recursive call, update the parent of each node on the path from 'x' to the root to point directly to the root.
+     *  5-Once the root is found, return the root element,, indicating the representative of the set to which 'x' belongs
+     * 
+    */  
+
+
+   private static 
 
     public static void numberOfConnectedComponentsUndirectedGraph() {
 
