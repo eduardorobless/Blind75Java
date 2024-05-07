@@ -216,7 +216,23 @@ public class Medium {
      */     
 
 
-
+    /**
+     * Course Schedule 
+     * 
+     * 
+     *  Time Complexity
+     *      Building the adjacency list: O(E) where E is the number of prerequisites
+     *      DFS for detecting cycles: O(V + E) where V is the number of vertices (numCourses) and E is the number of edges(prerequisites)
+     *      Iterating over courses: O(V) where is v is the number of vertices (numCourses). 
+     * 
+     *  So, overal the time complexity is O(V + E)
+     *  
+     * 
+     *  Space Complexity
+     *      Adjacency list: O(V + E) where v is the number of vertices (numCourses) and E is the number of edges (prerquisites)
+     *      vISITED AND eXPLORED aRRAYS:? 
+     *      Boolean and explored boolean arrays: O(V) where V is the number of vertices (numCourses). 
+     */
 
 
     private static boolean isCyclic(int i, List<Integer>[] adj, boolean[] visited, boolean[] explored) {
@@ -291,5 +307,15 @@ public class Medium {
 
         // Represent graph using adjacency list because it gives us flexibilty in case we have a sparse graph
         return courseSchedule(2, arr);      
+    }
+
+
+
+    public static void numberOfConnectedComponentsUndirectedGraph() {
+
+    }
+
+    public static void numberOfConnectedComponentsUndirectedGraphSetup() {
+
     }
 }
