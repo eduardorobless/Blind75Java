@@ -170,7 +170,9 @@ class Main {
         ////////////////////////////////////////////////////// GRAPHS ////////////////////////////////////////////////////////
         //cloneGraphSetup();
         
-        printRes(courseScheduleSetup());
+        // printRes(courseScheduleSetup());
+        
+        printRes(numberOfConnectedComponentsUndirectedGraphSetup());
         
 
     }

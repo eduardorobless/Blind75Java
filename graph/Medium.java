@@ -17,6 +17,10 @@ class Node {
     }
 }
 
+
+
+
+
 public class Medium {
     /**       Clone graph 
      * 
@@ -351,7 +355,7 @@ public class Medium {
      * 
      *  Approach: 
      *  1-Start with an element 'x' for which the root needs to be found.
-     *  2-Check if the parent of 'x' is equa to 'x'. If true, 'x' is the root of its set, and the find operation is complete.
+     *  2-Check if the parent of 'x' is equal to 'x'. If true, 'x' is the root of its set, and the find operation is complete.
      *  3-If the parent of 'x' is not equal to 'x', indicating that 'x' is not the root of its set, recursiveltyy call the 'Find'
      *  function on the parent of 'x'. 
      *  4-During the recursive call, update the parent of each node on the path from 'x' to the root to point directly to the root.
@@ -360,13 +364,101 @@ public class Medium {
     */  
 
 
-   private static 
 
-    public static void numberOfConnectedComponentsUndirectedGraph() {
+
+    public static int numberOfConnectedComponentsUndirectedGraph(int n, int[][] edges) {
+        if(n == 0 ||  edges.length == 0) return 0;
+
+        UnionFind uf = new UnionFind(n); 
+
+
+        // Union opeartion on each edge 
+        for(int[] edge: edges) {
+            uf.union(edge[0], edge[1]); 
+        }   
+
+
+        // Count distinct roots (connected components) 
+        Set<Integer> components = new HashSet<>(); 
+        for(int i = 0; i < n; i++) {
+            components.add(uf.find(i)); 
+        }
+
+        return components.size(); 
 
     }
 
-    public static void numberOfConnectedComponentsUndirectedGraphSetup() {
+    public static int numberOfConnectedComponentsUndirectedGraphSetup() {
+
+        int n = 6; 
+        int [][] edges = {
+            {0, 1}, 
+            {1, 2}, 
+            {3, 4}, 
+            {5, 5}
+        };
+
+        return numberOfConnectedComponentsUndirectedGraph(n, edges); 
 
     }
+}
+
+
+
+
+class UnionFind {
+    private int[] parent; 
+    private int[] rank; 
+
+
+    public UnionFind(int n) {
+        parent = new int[n]; 
+        rank = new int[n]; 
+        for(int i = 0; i < n; i++) {
+            parent[i] = i; 
+            rank[i] = 0;
+        }
+    }
+
+    public  int find(int x) {        
+            if(parent[x] != x) 
+                parent[x] = find(parent[x]);
+
+            return parent[x];
+    }
+
+
+    public void union(int x, int y) {
+            int root_x = find(x); 
+            int root_y = find(y); 
+
+            if(root_x == root_y) return; 
+
+            if(rank[root_x] < rank[root_y]) 
+                parent[root_x] = root_y;
+            else if (rank[root_x] > rank[root_y]) 
+                parent[root_y] = root_x;
+            else   {
+                parent[root_y] = root_x; 
+                rank[root_x] = rank[root_x] + 1; 
+            }
+
+
+            // path compression for the elements along the path from x to root x; updating their parents to root_x;     
+            int temp;
+            while(x != root_x) {
+                temp = parent[x];  // temp parent of x 
+                parent[x] = root_x;
+                x = temp;
+            }   
+
+            // path compression for the elements along the path from y to root y; updating their parents to root_y; 
+
+            while(y != root_y) {
+                temp = parent[y]; 
+                parent[y] = root_y; 
+                y = temp; 
+            }
+    }   
+    
 }
