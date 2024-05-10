@@ -22,7 +22,7 @@ class Node {
 
 
 public class Medium {
-    /**       Clone graph 
+    /**       Clone  an undirected graph 
      * 
      * 
      * 
@@ -367,7 +367,7 @@ public class Medium {
 
     /* Time and space complexity: 
         
-    Time complexity: O(E + N)
+    Time complexity: O(E + N)11111111111111
 
 
     Space complexity: O(N)
@@ -419,6 +419,101 @@ public class Medium {
         };
 
         return numberOfConnectedComponentsUndirectedGraph(n, edges); 
+
+    }
+
+
+
+    /** Graph Valid Tree 
+     * 
+     * 
+     * 
+     * Proposal: Given a undirected graph determine if it is a valid tree
+     * Strategy: Trees accomplish the following: 
+     * 
+     * 1 - Are not allowed to have cycles. 
+     * 2 - Its elements must be connected.
+     * 
+     * Algorithm: 
+     * 
+     * 
+     * 1-Start DFS traversal from any node in the graph
+     * 2-Keep track of visited nodes to avoid revisiting them
+     * 3-For each visited node: 
+     *  Mark it as visited.
+     *  Visit all its enighbors 
+     *  If a neighbor is already visited, then there is a cycle, and the graph is not a tree.
+     * 
+     * 4-Afte traversal: 
+     * 
+     * If all nodes are visited and there are no cycles, chek if the number of vertices visited is equal to n return true
+     * as the grap is valid otherwise return false. 
+     * 
+     * 
+     * 
+     * Time Complexity: 
+     * O(V+E)
+     * Space Complexity: 
+     * O(V+R)
+    */
+
+
+    private static boolean visitNodeUndirectedGraph(int i, int prev, Set<Integer> visited, List<Integer>[] adj) { 
+        if (visited.contains(i)) return false; 
+
+        visited.add(i); 
+        // visit all neighbors 
+        for(int j: adj[i]) {
+            // skip parent
+            if(j == prev) continue;
+
+            if(!visitNodeUndirectedGraph(j, i, visited, adj)) return false;
+        }
+
+
+        return true;
+        
+    }
+
+    public static boolean graphValidTree(int n, int [][] edges) { 
+
+       if (Integer.valueOf(n) == null) return true;
+
+       // allocate space for adjacency list
+      //List<Integer>[] adj; you dont;
+
+        // adj = new ArrayList[numCourses];
+
+
+       List<Integer>[] adj = new ArrayList[n];// setting reference type, AND allocating memory :) 
+
+
+       for (int i = 0 ; i < n ; i++) {
+        adj[i] = new ArrayList<>();
+       }
+
+       for(int[] edge: edges ) {
+        adj[edge[0]].add(edge[1]); 
+        adj[edge[1]].add(edge[0]);
+       }
+
+        Set<Integer> visited= new HashSet<>(); 
+
+        return visitNodeUndirectedGraph(0, -1, visited, adj) && visited.size() == n; 
+    }
+
+    public static boolean graphValidTreeSetup() {
+
+        int n = 5; 
+        int [][] edges = 
+        {
+            {0, 1}, 
+            {0, 2},
+            {0, 3},
+            {1, 4}        
+        }; 
+
+        return graphValidTree(n, edges);
 
     }
 }

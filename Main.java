@@ -172,7 +172,9 @@ class Main {
         
         // printRes(courseScheduleSetup());
         
-        printRes(numberOfConnectedComponentsUndirectedGraphSetup());
+        // printRes(numberOfConnectedComponentsUndirectedGraphSetup());
+        
+        printRes(graphValidTreeSetup()); 
         
 
     }
@@ -208,7 +210,7 @@ class Main {
             System.out.println(res); 
         }
         else {
-            System.out.println(res); 
+            System.out.println("Result is: " + res); 
         }
     } 
 }
