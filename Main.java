@@ -180,7 +180,8 @@ class Main {
 
         /////////////////////////////////////////////////////// LINKED LIST //////////////////////////////////////////////////////
 
-        reverseLinkedList(); 
+        //reverseLinkedList(); 
+        printRes(detectCycleLinkedList());
         
     
     }

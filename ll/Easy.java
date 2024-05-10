@@ -114,13 +114,73 @@ public class Easy {
     }
 
 
-    private static void detectCycleLinkedList() {
+
+        /* 
+        
+        Detect cycle in listed list 
+
+        Strategy: 
+
+        For a non optimal solution
+            To detect if there exists a cycle suffices to create a hash table storing directions 
+            .Iterate trough the linked list and check if there is repeated address. If that's the case
+            we have found a cycle. 
+
+        Time Complexity: 
+
+        O(N) 
+        Space Complexity: 
+        O(N)
+
+        For an optimal Solution
+            Use the Floyd Warshall ; basically consists in using two pointers, a slow one and a 
+            faster one, eventually if there exists a cycle , they will match. 
+
+        Time Complexity: 
+        O(N) ; N is the number of nodes 
+        Space Complexity: 
+        O(1)
+        
+        */  
+
+    private static void detectCycleLinkedListFloydWarshall() {
+
+    }
+
+    private static boolean detectCycleLinkedListBruteForce(ListNode head) {
+        if (head == null) return false; 
+
+        HashMap<Integer, Integer> memoryAddress = new HashMap<>(); 
+        ListNode current = head;
+        while(current != null) {
+            if(memoryAddress.containsKey(System.identityHashCode(current) ) )  return true; 
+            memoryAddress.put(Integer.valueOf(System.identityHashCode(current)), Integer.valueOf(System.identityHashCode(current)) ) ; 
+            current = current.next;
+         }
+
+
+         return false; 
+    }
+
+    public static boolean detectCycleLinkedList() {
+        ListNode node1 = new ListNode(3); 
+        ListNode node2 = new ListNode(2); 
+        ListNode node3 = new ListNode(0); 
+        ListNode node4 = new ListNode(-4);
+
+
+        node1.next = node2; 
+        node2.next = node3; 
+        node3.next = node4;
+        node4.next = node2;
+
+        return detectCycleLinkedListBruteForce(node1);
 
     }
 
 
 
-    private static void mergeTwoSortedLists() {
+    public static void mergeTwoSortedLists() {
 
     }
 
