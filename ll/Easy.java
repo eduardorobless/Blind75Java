@@ -191,11 +191,80 @@ public class Easy {
         //return detectCycleLinkedListBruteForce(node1);
         return detectCycleLinkedListFloydWarshall(node1);
 
+    }   
+
+
+
+    /**
+     * Merge two sorted dlists 
+     * 
+     * 
+     * Strategy: 
+     * use two pointer at the begginning of each linked list 
+     * Compare each pointer to add a new node , when either linked list finish add the remaining
+     * 
+     * 
+     * Time Complexity: 
+     * O(N)
+     * Space Complexity: 
+     * O(1)
+     */
+
+
+    private static ListNode mergeTwoSortedListsImpl(ListNode list1, ListNode list2) {
+
+        
+        ListNode resultNode = new ListNode();
+        ListNode headNode = resultNode;
+
+        while(list1 != null && list2 != null) {
+            if(list1.val <= list2.val) {
+                resultNode.next = list1; 
+                list1 = list1.next;
+            }
+
+            else {
+                resultNode.next = list2; 
+                list2 = list2.next; 
+            }
+
+
+            resultNode = resultNode.next;
+        }
+
+
+        // adding remaing elements 
+        if (list1 == null) {
+            resultNode.next = list2; 
+        } 
+        else  if(list2 == null) {
+            resultNode.next = list1;
+        } 
+
+
+
+        return headNode.next; 
+
     }
 
-
-
     public static void mergeTwoSortedLists() {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2); 
+        ListNode node3 = new ListNode(4); 
+
+        ListNode node4 = new ListNode(1); 
+        ListNode node5 = new ListNode(3); 
+        ListNode node6 = new ListNode(4);  
+
+
+        node1.next = node2; 
+        node2.next = node3; 
+        
+        node4.next = node5; 
+        node5.next = node6; 
+
+
+        printLinkedList(mergeTwoSortedListsImpl(node1, node4));
 
     }
 

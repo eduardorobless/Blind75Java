@@ -181,7 +181,9 @@ class Main {
         /////////////////////////////////////////////////////// LINKED LIST //////////////////////////////////////////////////////
 
         //reverseLinkedList(); 
-        printRes(detectCycleLinkedList());
+        //printRes(detectCycleLinkedList());
+        mergeTwoSortedLists(); 
+
         
     
     }
