@@ -365,8 +365,16 @@ public class Medium {
 
 
 
+        /* Time and space complexity: 
+        
+        Time complexity: O(E + N)
 
-    public static int numberOfConnectedComponentsUndirectedGraph(int n, int[][] edges) {
+
+        Space complexity: O(N)
+
+        */ 
+    
+        public static int numberOfConnectedComponentsUndirectedGraph(int n, int[][] edges) {
         if(n == 0 ||  edges.length == 0) return 0;
 
         UnionFind uf = new UnionFind(n); 
@@ -388,6 +396,18 @@ public class Medium {
 
     }
 
+
+
+    
+        /* Time and space complexity: 
+        
+        Time complexity: O(E + N)
+
+
+        Space complexity: O(N)
+
+        */ 
+
     public static int numberOfConnectedComponentsUndirectedGraphSetup() {
 
         int n = 6; 
@@ -405,7 +425,14 @@ public class Medium {
 
 
 
+        /* Time and space complexity: 
+        
+        Time complexity: O(LOGN)
 
+
+        Space complexity: O(N)
+
+        */ 
 class UnionFind {
     private int[] parent; 
     private int[] rank; 
@@ -443,7 +470,7 @@ class UnionFind {
                 rank[root_x] = rank[root_x] + 1; 
             }
 
-
+                     
             // path compression for the elements along the path from x to root x; updating their parents to root_x;     
             int temp;
             while(x != root_x) {
