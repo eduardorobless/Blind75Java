@@ -143,7 +143,21 @@ public class Easy {
         
         */  
 
-    private static void detectCycleLinkedListFloydWarshall() {
+    private static boolean detectCycleLinkedListFloydWarshall(ListNode head) {
+
+        ListNode slowPtr = head; 
+        ListNode fastPtr = head; 
+
+
+        while(slowPtr != null && fastPtr != null && fastPtr.next != null) { 
+            // adavanced both pointers 
+            slowPtr = slowPtr.next; 
+            fastPtr = fastPtr.next.next; 
+            
+            if(slowPtr == fastPtr) return true;
+        }
+
+        return false; 
 
     }
 
@@ -174,7 +188,8 @@ public class Easy {
         node3.next = node4;
         node4.next = node2;
 
-        return detectCycleLinkedListBruteForce(node1);
+        //return detectCycleLinkedListBruteForce(node1);
+        return detectCycleLinkedListFloydWarshall(node1);
 
     }
 
