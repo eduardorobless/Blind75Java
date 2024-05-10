@@ -365,16 +365,16 @@ public class Medium {
 
 
 
-        /* Time and space complexity: 
+    /* Time and space complexity: 
         
-        Time complexity: O(E + N)
+    Time complexity: O(E + N)
 
 
-        Space complexity: O(N)
+    Space complexity: O(N)
 
-        */ 
+    */ 
     
-        public static int numberOfConnectedComponentsUndirectedGraph(int n, int[][] edges) {
+    public static int numberOfConnectedComponentsUndirectedGraph(int n, int[][] edges) {
         if(n == 0 ||  edges.length == 0) return 0;
 
         UnionFind uf = new UnionFind(n); 
@@ -399,14 +399,14 @@ public class Medium {
 
 
     
-        /* Time and space complexity: 
+    /* Time and space complexity: 
         
-        Time complexity: O(E + N)
+    Time complexity: O(E + N)
 
 
-        Space complexity: O(N)
+    Space complexity: O(N)
 
-        */ 
+    */ 
 
     public static int numberOfConnectedComponentsUndirectedGraphSetup() {
 
@@ -425,14 +425,14 @@ public class Medium {
 
 
 
-        /* Time and space complexity: 
+/* Time and space complexity: 
         
-        Time complexity: O(LOGN)
+Time complexity: O(LOGN)
 
 
-        Space complexity: O(N)
+Space complexity: O(N)
 
-        */ 
+*/ 
 class UnionFind {
     private int[] parent; 
     private int[] rank; 
