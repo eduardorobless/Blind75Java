@@ -35,13 +35,21 @@ public class Easy {
     /*
     Strategy: Use two pointers to change relationships
     1 - Iterate from head to null 
-    2 - Current ptr is head, prev ptr is null,  store next node in tmp variable.
-    update pointers: next node is tmp , prev ptr  is current node
-    3 - assign head = prev and return head;
+    2 - use two pointers current and prev. current points to head,  previous to null initially, iterate until current is null
+    return prev as the new head
+    3 - in each iteartion: 
+        store next in temp: temp = current.next
+        assign current to previous:  prev =  current  
+        update next value: current.next 
+    
+    Time complexity: 
+    O(N)
+    Space complexity: 
+    O(1)
     */ 
 
 
-    private static void reverseLinkedListIterative(ListNode head) {
+    private static ListNode reverseLinkedListIterative(ListNode head) {
         if(head == null) return null;
         
         // Strategy
@@ -55,13 +63,29 @@ public class Easy {
             current = tempNext; 
         }
 
-        printLinkedList(prev);
-
+        
+        return prev;
     }
 
+    /*
+    Recursive approach is almost identical except in space complexity. 
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+    */ 
 
-    private static void reverseLinkedListRecursively() {
 
+    
+    private static  ListNode reverseLinkedListRecursively(ListNode cur, ListNode prev) {
+        //base case if cur is null return prev
+
+        if(cur == null) return prev;
+        else{
+            ListNode tempNext = cur.next; 
+            cur.next = prev;
+            return reverseLinkedListRecursively(tempNext, cur); 
+        }
+
+        
     }
     public static void reverseLinkedList() {
         // create linked list 
@@ -82,7 +106,11 @@ public class Easy {
         printLinkedList(node1);
 
     
-        reverseLinkedListIterative(node1);
+        // ListNode head = reverseLinkedListIterative(node1);
+        // printLinkedList(head);
+        
+        ListNode head1 = reverseLinkedListRecursively(node1, null);
+        printLinkedList(head1);
     }
 
 
