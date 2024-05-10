@@ -6,6 +6,7 @@ import static binary.Medium.*;
 import static dynamicprogramming.Easy.*; 
 import static dynamicprogramming.Medium.*;
 import static graph.Medium.*;
+import static ll.Easy.*;
 
 
 import  java.util.List; 
@@ -174,9 +175,14 @@ class Main {
         
         // printRes(numberOfConnectedComponentsUndirectedGraphSetup());
         
-        printRes(graphValidTreeSetup()); 
-        
+        // printRes(graphValidTreeSetup()); 
 
+
+        /////////////////////////////////////////////////////// LINKED LIST //////////////////////////////////////////////////////
+
+        reverseLinkedList(); 
+        
+    
     }
 
 

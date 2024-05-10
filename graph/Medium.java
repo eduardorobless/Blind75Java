@@ -1,5 +1,6 @@
 package graph;
 import java.util.*;
+
 class Node {
     public int val;
     public List<Node> neighbors;
@@ -17,9 +18,70 @@ class Node {
     }
 }
 
+/* Time and space complexity: 
+        
+Time complexity: O(LOGN)
 
 
+Space complexity: O(N)
 
+*/ 
+class UnionFind {
+    private int[] parent; 
+    private int[] rank; 
+
+
+    public UnionFind(int n) {
+        parent = new int[n]; 
+        rank = new int[n]; 
+        for(int i = 0; i < n; i++) {
+            parent[i] = i; 
+            rank[i] = 0;
+        }
+    }
+
+    public  int find(int x) {        
+            if(parent[x] != x) 
+                parent[x] = find(parent[x]);
+
+            return parent[x];
+    }
+
+
+    public void union(int x, int y) {
+            int root_x = find(x); 
+            int root_y = find(y); 
+
+            if(root_x == root_y) return; 
+
+            if(rank[root_x] < rank[root_y]) 
+                parent[root_x] = root_y;
+            else if (rank[root_x] > rank[root_y]) 
+                parent[root_y] = root_x;
+            else   {
+                parent[root_y] = root_x; 
+                rank[root_x] = rank[root_x] + 1; 
+            }
+
+                     
+            // path compression for the elements along the path from x to root x; updating their parents to root_x;     
+            int temp;
+            while(x != root_x) {
+                temp = parent[x];  // temp parent of x 
+                parent[x] = root_x;
+                x = temp;
+            }   
+
+            // path compression for the elements along the path from y to root y; updating their parents to root_y; 
+
+            while(y != root_y) {
+                temp = parent[y]; 
+                parent[y] = root_y; 
+                y = temp; 
+            }
+    }   
+    
+}
 
 public class Medium {
     /**       Clone  an undirected graph 
@@ -459,7 +521,7 @@ public class Medium {
 
 
     private static boolean visitNodeUndirectedGraph(int i, int prev, Set<Integer> visited, List<Integer>[] adj) { 
-        if (visited.contains(i)) return false; 
+        if (visited.contains(i)) return false; // loop detected
 
         visited.add(i); 
         // visit all neighbors 
@@ -519,68 +581,3 @@ public class Medium {
 }
 
 
-
-/* Time and space complexity: 
-        
-Time complexity: O(LOGN)
-
-
-Space complexity: O(N)
-
-*/ 
-class UnionFind {
-    private int[] parent; 
-    private int[] rank; 
-
-
-    public UnionFind(int n) {
-        parent = new int[n]; 
-        rank = new int[n]; 
-        for(int i = 0; i < n; i++) {
-            parent[i] = i; 
-            rank[i] = 0;
-        }
-    }
-
-    public  int find(int x) {        
-            if(parent[x] != x) 
-                parent[x] = find(parent[x]);
-
-            return parent[x];
-    }
-
-
-    public void union(int x, int y) {
-            int root_x = find(x); 
-            int root_y = find(y); 
-
-            if(root_x == root_y) return; 
-
-            if(rank[root_x] < rank[root_y]) 
-                parent[root_x] = root_y;
-            else if (rank[root_x] > rank[root_y]) 
-                parent[root_y] = root_x;
-            else   {
-                parent[root_y] = root_x; 
-                rank[root_x] = rank[root_x] + 1; 
-            }
-
-                     
-            // path compression for the elements along the path from x to root x; updating their parents to root_x;     
-            int temp;
-            while(x != root_x) {
-                temp = parent[x];  // temp parent of x 
-                parent[x] = root_x;
-                x = temp;
-            }   
-
-            // path compression for the elements along the path from y to root y; updating their parents to root_y; 
-
-            while(y != root_y) {
-                temp = parent[y]; 
-                parent[y] = root_y; 
-                y = temp; 
-            }
-    }   
-    
-}
