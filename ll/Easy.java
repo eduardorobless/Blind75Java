@@ -214,8 +214,8 @@ public class Easy {
     private static ListNode mergeTwoSortedListsImpl(ListNode list1, ListNode list2) {
 
         
-        ListNode resultNode = new ListNode();
-        ListNode headNode = resultNode;
+        ListNode resultNode = new ListNode(); // keep for iteartion purposes
+        ListNode headNode = resultNode; // sentinel node;
 
         while(list1 != null && list2 != null) {
             if(list1.val <= list2.val) {
