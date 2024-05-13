@@ -184,7 +184,8 @@ class Main {
         //reverseLinkedList(); 
         //printRes(detectCycleLinkedList());
         //mergeTwoSortedLists(); 
-        removeNthNodeFromEndOfList();
+        //removeNthNodeFromEndOfList();
+        reorderList();
 
         
     
