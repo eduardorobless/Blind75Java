@@ -7,6 +7,7 @@ import static dynamicprogramming.Easy.*;
 import static dynamicprogramming.Medium.*;
 import static graph.Medium.*;
 import static ll.Easy.*;
+import static ll.Medium.*;
 
 
 import  java.util.List; 
@@ -182,7 +183,8 @@ class Main {
 
         //reverseLinkedList(); 
         //printRes(detectCycleLinkedList());
-        mergeTwoSortedLists(); 
+        //mergeTwoSortedLists(); 
+        removeNthNodeFromEndOfList();
 
         
     

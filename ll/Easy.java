@@ -1,37 +1,8 @@
 package ll;
 import java.util.*;
 
-
-class ListNode {
-    int val; 
-    ListNode next; 
-    ListNode() {}
-    ListNode(int val) {
-        this.val = val; 
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val; 
-        this.next = next; 
-    }
-
-}
-
-
-
-
 public class Easy {
-    private static void printLinkedList(ListNode head) {
-        ListNode current = head;
-        while(current != null) {
-            System.out.print(current.val + " -> ");
-            current = current.next;
-        }
 
-
-        System.out.print("null"); 
-        System.out.println();
-    }
     /*
     Strategy: Use two pointers to change relationships
     1 - Iterate from head to null 
@@ -103,14 +74,14 @@ public class Easy {
         node3.next = node4; 
         node4.next = node5; 
 
-        printLinkedList(node1);
+        ListNode.printLinkedList(node1);
 
     
         // ListNode head = reverseLinkedListIterative(node1);
         // printLinkedList(head);
         
         ListNode head1 = reverseLinkedListRecursively(node1, null);
-        printLinkedList(head1);
+        ListNode.printLinkedList(head1);
     }
 
 
@@ -264,7 +235,7 @@ public class Easy {
         node5.next = node6; 
 
 
-        printLinkedList(mergeTwoSortedListsImpl(node1, node4));
+        ListNode.printLinkedList(mergeTwoSortedListsImpl(node1, node4));
 
     }
 
