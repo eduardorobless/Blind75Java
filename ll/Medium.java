@@ -123,7 +123,7 @@ public class Medium {
         
         ListNode middle = middle(head);       
         reverseHalfMiddle(middle);
-        head = reorder(head, middle);
+        reorder(head, middle);
 
         ListNode.printLinkedList(head);
 
