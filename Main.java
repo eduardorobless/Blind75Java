@@ -1,6 +1,6 @@
 
-import static arrays.Easy.*; 
-import static arrays.Medium.*;
+import static array.Easy.*; 
+import static array.Medium.*;
 import static binary.Easy.*;
 import static binary.Medium.*;
 import static dynamicprogramming.Easy.*; 
@@ -8,7 +8,7 @@ import static dynamicprogramming.Medium.*;
 import static graph.Medium.*;
 import static ll.Easy.*;
 import static ll.Medium.*;
-
+import static string.Easy.*;
 
 import  java.util.List; 
 import java.util.ArrayList; 
@@ -185,10 +185,11 @@ class Main {
         //printRes(detectCycleLinkedList());
         //mergeTwoSortedLists(); 
         //removeNthNodeFromEndOfList();
-        reorderList();
+        //reorderList();
 
-        
-    
+
+        //////////////////////////////////////////////////////// STRINGS ////////////////////////////////////////////////////////////
+        printRes(validPalindrome());        
     }
 
 
