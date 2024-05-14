@@ -189,7 +189,8 @@ class Main {
 
 
         //////////////////////////////////////////////////////// STRINGS ////////////////////////////////////////////////////////////
-        printRes(validPalindrome());        
+        //printRes(validPalindrome());        
+        printRes(validParentheses()); 
     }
 
 

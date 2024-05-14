@@ -3,8 +3,62 @@ package string;
 
 
 public class Easy {
-    private static  boolean validParantheses() {
-        return false;
+
+
+    /**
+     * Valid parantheses
+     * 
+     * Strategy: 
+     * 
+     *  Push opening brace on stack, pop if matching close brace, at end if stac empty, return true;
+     * 
+     * 
+     * 
+     * Time Complexity: 
+     * 
+     * O(N)
+     * 
+     *
+     * Space Complexity: 
+     * 
+     * O(N)
+     */
+
+
+
+
+    private static  boolean validParanthesesSetup(String valid) {
+        
+        Stack<Character> stack = new Stack<>();
+
+
+        // if is open push it if not check it, remember edge cases for when stack is empty!
+        for(Character c: valid.toCharArray()) {
+            if(c == '(' || c == '[' || c == '{') stack.push(c); 
+
+            else {
+                if(stack.isEmpty()) return false;
+
+                // check for mistmatching with top and new closing char
+                char top = stack.pop();
+
+                if(    (c == ')' && top != '(') || 
+                        (c == ']' && top != '[' ) ||
+                        (c == '}' && top != '{')  ) 
+                    return false;
+                        
+            }
+        }
+
+        return stack.isEmpty();
+
+    }
+
+
+    
+    public static boolean validParentheses() { 
+        String valid = "()[]{}";
+        return validParanthesesSetup(valid); 
     }
 
 
