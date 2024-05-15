@@ -1,5 +1,5 @@
 package string; 
-
+import java.util.*;
 
 
 public class Easy {
@@ -22,7 +22,7 @@ public class Easy {
      * Space Complexity: 
      * 
      * O(N)
-     */
+     */ 
 
 
 
@@ -118,8 +118,51 @@ public class Easy {
 
     }
 
+    /***
+     * Valid Anargam 
+     * 
+     * Definition   
+     *  Anagram
+     *  t is an anagram of a word s if t can be formed by a rearrenging of all chracters (exactly once) of s  
+     * 
+     *  Strategy
+     *  1 -  Create an empty bucket array where we store the frequency of each character in both strings; for
+     *        s string add one for t string substract one.
+        * 2 - Iterate trough buckets if we find a non zero , then word is not an anagram
+     */
+    private static boolean validAnagramSetup(String s, String t) {
+        // normalize the strings, lower case and remove all white spaces
+        s = s.toLowerCase();
+        t = t.toLowerCase();
 
-    private static boolean validAnagram() {
-        return false;
+        s = s.replaceAll("\\s+", ""); 
+        t = t.replaceAll("\\s+", ""); 
+
+        // create buckets
+        int [] bucket = new int[26];
+
+        // fill bucket
+        for(char c : s.toCharArray()) 
+            bucket[c - 'a'] += 1;
+
+        for(char c: t.toCharArray()) 
+            bucket[c - 'a'] -= 1;
+
+
+        for(int i = 0;  i < bucket.length; i++) {
+            if(bucket[i] != 0) 
+                return false;
+        }
+        return true;
+
+
+
+    }
+
+    public static boolean validAnagram() {
+        String s = "dormitory"; 
+        String t =  "dirty room";
+
+        return validAnagramSetup(s, t);
     }   
 }
