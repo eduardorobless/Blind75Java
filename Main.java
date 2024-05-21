@@ -193,7 +193,8 @@ class Main {
         //printRes(validPalindrome());        
         //printRes(validParentheses()); 
         //printRes(validAnagram());
-        printRes(longestSubstringWithoutRepeatingCharacters());
+        //printRes(longestSubstringWithoutRepeatingCharacters());
+        printRes(groupAnagrams());
     }
 
 
@@ -213,6 +214,8 @@ class Main {
                     for(Object innerObj : innerList) {
                         if (innerObj instanceof Integer) {
                             System.out.print(innerObj + " ");
+                        } else if (innerObj instanceof String) {
+                            System.out.print(innerObj + " | ");
                         }
            
                     }

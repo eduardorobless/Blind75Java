@@ -115,7 +115,7 @@ public class Medium {
 
 
 
-    private static List<List<String> groupAnagramsSortingFun(String[] strs) {
+    private static List<List<String>> groupAnagramsSortingFun(String[] strs) {
         List<List<String>> result = new ArrayList<>();
         Map<String, List<String>> map  = new HashMap<>(); 
 
@@ -130,7 +130,7 @@ public class Medium {
             if(map.containsKey(sortedString)) {
                 map.get(sortedString).add(s); 
             } else {
-                List<String> tmplist = new ArrayList();
+                List<String> tmplist = new ArrayList<>();
                 tmplist.add(s);
                 map.put(sortedString, tmplist);
             }
