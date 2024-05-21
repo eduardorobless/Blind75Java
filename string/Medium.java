@@ -115,7 +115,43 @@ public class Medium {
 
 
 
+    private static List<List<String> groupAnagramsSortingFun(String[] strs) {
+        List<List<String>> result = new ArrayList<>();
+        Map<String, List<String>> map  = new HashMap<>(); 
 
+
+        for(String s: strs) {
+            char [] tempArray = s.toCharArray();
+            Arrays.sort(tempArray);
+            String sortedString = new String(tempArray); 
+
+
+
+            if(map.containsKey(sortedString)) {
+                map.get(sortedString).add(s); 
+            } else {
+                List<String> tmplist = new ArrayList();
+                tmplist.add(s);
+                map.put(sortedString, tmplist);
+            }
+        }
+
+
+        for(Map.Entry<String, List<String>> entry: map.entrySet()) {
+            result.add(entry.getValue());
+        }
+        
+        // loop trough each string in input
+        // sort the string 
+        // insert into the hashmap 
+        // itearte tro ugh the hashmap and put each value in our result array 
+        // return result array
+
+
+
+        return result; 
+
+    }
     
     private static String  stringFrequency(String s) {        
         int [] freq = new int[26];
