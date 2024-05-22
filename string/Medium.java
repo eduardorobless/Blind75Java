@@ -202,8 +202,74 @@ public class Medium {
         return groupAnagramsFun(strs);
     }
 
-    private static String longestPalindromicSubstring() {
-        return "";
+
+
+
+    /**
+     * 
+     * 
+     *  Longest Palindromic substring
+     * 
+     *  Strategy: 
+     * 
+     *  To be able to solve this problem, note that you need to do: 
+     *
+     *  1 - Iterate trough string, starting from position 1 to end of string. Then look for odd and even palindromic substrings. 
+     * 
+     *  
+     * 
+     *  To look for odd position do: 
+     *  Starting two pointers at same positon , afterwerds, to look for left and right positions
+     *  until bound are met, our bounds are first and last index. 
+     * 
+     *  To lok for even position, do:
+     * 
+     *  Startig from left pointer one positionleft of right pointer, look for left and right positions 
+     *  until bound positions are met, they are same as odd position. 
+     * 
+     *  2 - return longest palindromic substring
+     * 2 - 
+     */
+
+
+    private static String expandAroundCenter(String s, int left, int right) {
+        //what the fuck you gonnad do , you are gonna do expand around bounds and same characters return from left + 1 and right - 1 
+        while(left >= 0 && right < s.length()  && s.charAt(left) == s.charAt(right))   {
+            left--; 
+            right++;
+        }
+        return s.substring(left + 1, right);
+    }
+    private static String longestPalindromicSubstringFun(String s) {
+
+        if(s == null || s.isEmpty()) return "";
+        String lps = ""; 
+        int sLength = s.length();
+        if (s.length() == 1) return s;
+
+        for(int i = 0 ; i < sLength;  i++) { 
+            
+            //odd 
+            String oddPalindrome = expandAroundCenter(s, i, i); 
+
+            if(oddPalindrome.length() > lps.length()) 
+                lps = oddPalindrome;
+
+
+
+            //even 
+            String evenPalindrome = expandAroundCenter(s, i, i+1);
+            if(evenPalindrome.length() > lps.length())
+                lps = evenPalindrome;
+        }
+
+        return lps;
+
+        
+    }   
+    public static String longestPalindromicSubstring() {
+        String s = "babad";
+        return longestPalindromicSubstringFun(s);
     }
 
     private static int palindromicSubstrings() {

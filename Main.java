@@ -194,7 +194,8 @@ class Main {
         //printRes(validParentheses()); 
         //printRes(validAnagram());
         //printRes(longestSubstringWithoutRepeatingCharacters());
-        printRes(groupAnagrams());
+        //printRes(groupAnagrams());
+        printRes(longestPalindromicSubstring());
     }
 
 
