@@ -240,6 +240,17 @@ public class Medium {
         }
         return s.substring(left + 1, right);
     }
+
+
+    private static int countAroundCenter(String s, int left, int right, int count) {
+        //what the fuck you gonnad do , you are gonna do expand around bounds and same characters return from left + 1 and right - 1 
+        while(left >= 0 && right < s.length()  && s.charAt(left) == s.charAt(right))   {
+            left--; 
+            right++;
+            count++;
+        }
+        return count;
+    }
     private static String longestPalindromicSubstringFun(String s) {
 
         if(s == null || s.isEmpty()) return "";
@@ -251,6 +262,7 @@ public class Medium {
             
             //odd 
             String oddPalindrome = expandAroundCenter(s, i, i); 
+            System.out.println("ODD: " + oddPalindrome + ",  i: " + i);
 
             if(oddPalindrome.length() > lps.length()) 
                 lps = oddPalindrome;
@@ -259,6 +271,7 @@ public class Medium {
 
             //even 
             String evenPalindrome = expandAroundCenter(s, i, i+1);
+            System.out.println("EVEN: " + evenPalindrome + ",  i: " + i);
             if(evenPalindrome.length() > lps.length())
                 lps = evenPalindrome;
         }
@@ -268,12 +281,32 @@ public class Medium {
         
     }   
     public static String longestPalindromicSubstring() {
-        String s = "babad";
+        String s = "aaa";
         return longestPalindromicSubstringFun(s);
     }
 
-    private static int palindromicSubstrings() {
-        return 0;
+
+    private static int palindromicSubstringsFun(String s) { 
+
+        if(s == null || s.isEmpty()) return 0;
+        if (s.length() == 1) return 1;
+        
+        int count = 0; 
+        int sLength = s.length();
+
+        for(int i = 0 ; i < sLength;  i++) {                     
+            count = countAroundCenter(s, i, i, count); 
+            count = countAroundCenter(s, i, i+1, count);                
+        }
+
+        return count;
+
+
+    }
+    public static int palindromicSubstrings() {
+
+        String s = "aaa";
+        return palindromicSubstringsFun(s);
     }
 
     private static String encodeDecodeStringS() {

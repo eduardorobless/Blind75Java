@@ -196,6 +196,7 @@ class Main {
         //printRes(longestSubstringWithoutRepeatingCharacters());
         //printRes(groupAnagrams());
         printRes(longestPalindromicSubstring());
+        printRes(palindromicSubstrings()); 
     }
 
 
