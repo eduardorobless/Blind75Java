@@ -151,12 +151,15 @@ public class Medium {
      * 
      * Time complexity:
      * 
-     * Space complexity:
      * 
+     * O(N  * K LOG K)
+     * 
+     * Space complexity:
+     *  O(N)
      * 
      * 
      * When to use it 
-     * 
+     *  when k is not much longer than N
      */
     
     
