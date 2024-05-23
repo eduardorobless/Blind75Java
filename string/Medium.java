@@ -58,8 +58,64 @@ public class Medium {
 
     }
 
-    private static int longestRepeatingCharacterReplacement() {
-        return 0;
+
+
+    /**
+     * Longest Repaeting character replacement
+     * 
+     * 
+     * 
+     *  Strategy: 
+     * 
+     * 
+     *  1 - Use two pointers and sliding window.
+     *      Keep track of the character frequency; use a map , keys are the char, increment their count.
+     *  2 - Determine if we are in a valid segment: we need to determine the character with higher frequnency in order to determine if
+     *      we can have a valid segment which is said to be one when the lenght of substring - higher frequency of character in substring > k
+     *  3 - if we are in valid segment then we can also update max length of substring , to determine if we are in valid segment: 
+     *      substrating length  (right - left + 1) - higher frequency of character. update max length with length of valid sagment.
+    * 
+     *  4 - In other case we need to decrement left character from map, and inrement left pointer, and reset counter of higher frequency character.
+     * 
+     *  Time Complexity 
+     *      O(N)
+     * 
+     *  Space Complexity 
+     *      O(26)
+     * 
+     * **/
+
+
+    private static int longestRepeatingCharacterReplacementFun(String s, int k) {
+        int maxLenght = 0; 
+        int l = 0; 
+        int r = 0; 
+        int [] count = new int[26];
+        int maxCharacter = 0;
+
+        while(r < s.length()) {
+            count[s.charAt(r) - 'A']++; // increment character count; 
+
+            maxCharacter = Math.max(maxCharacter, count[s.charAt(r) - 'A'] );  // max number of chracter 
+            
+            if ((r - l + 1)  - maxCharacter > k)  {
+                count[s.charAt(l) - 'A']--; 
+                l++;
+            } 
+            
+            maxLenght =  Math.max(maxLenght, r - l + 1);            
+            r++;
+        }
+
+        
+
+        return maxLenght;   
+
+    } 
+    public static int longestRepeatingCharacterReplacement() {
+        String s = "ABAB";
+        int k = 2; 
+        return longestRepeatingCharacterReplacementFun(s, k);
     }
 
 
