@@ -88,28 +88,24 @@ public class Medium {
 
     private static int longestRepeatingCharacterReplacementFun(String s, int k) {
         int maxLenght = 0; 
-        int l = 0; 
-        int r = 0; 
         int [] count = new int[26];
-        int maxCharacter = 0;
+        int maxCharacter = 0;    
 
-        while(r < s.length()) {
-            count[s.charAt(r) - 'A']++; // increment character count; 
-
-            maxCharacter = Math.max(maxCharacter, count[s.charAt(r) - 'A'] );  // max number of chracter 
+        for(int r = 0, l = 0; r < s.length(); r++) {
+            
+            char currChar = s.charAt(r);
+            count[currChar- 'A']++; // increment character count; 
+            maxCharacter = Math.max(maxCharacter, count[currChar - 'A'] );  // max number of chracter 
             
             if ((r - l + 1)  - maxCharacter > k)  {
                 count[s.charAt(l) - 'A']--; 
                 l++;
             } 
             
-            maxLenght =  Math.max(maxLenght, r - l + 1);            
-            r++;
+            maxLenght =  Math.max(maxLenght, r - l + 1);  
         }
 
-        
-
-        return maxLenght;   
+        return maxLenght;  
 
     } 
     public static int longestRepeatingCharacterReplacement() {
