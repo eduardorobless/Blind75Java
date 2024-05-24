@@ -197,7 +197,8 @@ class Main {
         //printRes(groupAnagrams());
         // printRes(longestPalindromicSubstring());
         // printRes(palindromicSubstrings()); 
-        printRes(longestRepeatingCharacterReplacement());
+        // printRes(longestRepeatingCharacterReplacement());
+        printRes(encodeDecodeStrings());
     }
 
 

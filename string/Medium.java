@@ -364,7 +364,74 @@ public class Medium {
         return palindromicSubstringsFun(s);
     }
 
-    private static String encodeDecodeStringS() {
-        return  ""; 
+
+
+    /**
+     * 
+     * Encode - Decode Strings 
+     * 
+     * Objective:
+     * Encode a list of strings into a string , then decode into the original list 
+     * 
+     * Strategy: 
+     * Use two functions one for encoding and other for decoding. 
+     * 
+     *  Encoding function
+     *      To be able to decode the list of strings into a single string, use the following form while concatenating each string: 
+     *      {length}{separator}{string}, eg. 5#apple
+     * 
+     *  Decoding function
+     *      To be able to encode the string back to the original list:
+     *          1 - Find the index of the next '#' in the encoded string
+     *          2 - Extract the length of the next string from the encoded string
+     *          3 - Extract the next sting from the encoded string and add it to the list
+     *          4 - Move the current position to the beginning of the next encoded string 
+     *      
+     * 
+     * Encode String using lengt
+     * 
+     *  Time Complexity: 
+     *      O(KM) where k is the number of subnstrings in the encoded string and m is the length of the encoded string
+     * 
+     *  Space Complexity:
+     *      O(1)
+     * 
+     */
+
+    private static String encode(List<String> strings) {
+        StringBuilder sb = new StringBuilder(); 
+
+        for(String s: strings) {
+            sb.append(s.length()).append("#").append(s);
+        }
+
+        return sb.toString();
+    }
+
+    private static List<String> decode (String encoded) {
+        List<String> res = new ArrayList<>();
+        int i = 0; 
+        while(i < encoded.length()) {
+            int hashIndex = encoded.indexOf("#", i);
+            int length = Integer.parseInt(encoded.substring(i, hashIndex)); 
+
+            res.add(encoded.substring(hashIndex + 1, hashIndex + 1 + length));  
+             
+            i = hashIndex + 1 + length;        
+        }
+
+        return res;
+    }
+
+    private static boolean encodeDecodeStringsFun(List<String> strings) {
+        String encoded = encode(strings);
+        System.out.printf("encoded:  %s%n", encoded);
+        List<String> decoded = decode(encoded);
+        System.out.printf("decoded: [%s] %n", String.join(",", decoded));
+        return strings.equals(decoded);
+    }
+
+    public static boolean encodeDecodeStrings() {        
+        return  encodeDecodeStringsFun(Arrays.asList("apple", "banana", "orange")); 
     }
 }
