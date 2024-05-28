@@ -119,7 +119,22 @@ public class Easy {
         return isSameTreeFun(t1, p1);
     }
 
-    
+    /**
+     * Max Depth of binary tree
+     * 
+     *  Objective:
+     *      Determine max depth of a binary tree. You can get it from the root to the downmost leaf node.
+     *  Strategy:
+     *      Recursively traverse the binary tree left and right branches comparing at each level the 
+     *      left most depth value and the right value , adding one to it account for the current level.
+     * 
+     * Time Complexity: 
+     * 
+     *  O(N)
+     * 
+     * Space Complexity: 
+     *  O(N) where h is the height of the tree.
+     */
     private static int maxDepth(TreeNode root) {
         // Base case 
 
@@ -164,5 +179,70 @@ public class Easy {
         p4.right = p9; 
 
         return maximumDepthBinaryTreeFun(p1);
+    }
+
+
+    /**
+     * Invert Binary Tree 
+     *  Objective:
+     *      Invert all left and right subtrees of a binary tree. 
+     * 
+     * Strategy: 
+     *  DFS while inverting left and right sub-branches.
+     * 
+     * Time Complexity: 
+     *  O(N)
+     * 
+     * Space Complexity:
+     * 
+     * O(N)
+     * 
+     *      
+     */
+
+    private static TreeNode invertTree(TreeeNode root) {
+        if(root == null) 
+            return null;
+        
+        // temp store left value 
+        TreeNode temp = root.left; 
+        root.left = root.right; 
+        root.right = temp; 
+
+        invertTree(root.left); 
+        invertTree(root.right);
+        return root;  
+    }
+
+    public static TreeNode invertTreeFun(TreeNode root) {
+        return invertTree(root);
+    }
+
+
+
+    public static TreeNode invertTree() {
+        TreeNode p1 = new TreeNode(10); 
+        TreeNode p2 = new TreeNode(9);
+        TreeNode p3 = new TreeNode(8); 
+        TreeNode p4 = new TreeNode(7);  
+        TreeNode p5 = new TreeNode(6); 
+        TreeNode p6 = new TreeNode(5);
+        TreeNode p7 = new TreeNode(4); 
+        TreeNode p8 = new TreeNode(3); 
+        TreeNode p9 = new TreeNode(2); 
+        TreeNode p10 = new TreeNode(1); 
+
+        p1.left = p2; 
+        p1.right = p3;  
+
+        p2.left = p4; 
+        p2.right = p5; 
+
+        p3.left = p6; 
+        p3.right = p7;
+
+        p4.left = p8; 
+        p4.right = p9; 
+
     }
 }
