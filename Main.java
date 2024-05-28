@@ -206,7 +206,8 @@ class Main {
 
         /////////////////////////////////////////////////////// TREES/////////////////////////////////////////////////////////////////
         //bfs();
-        printRes(isSameTree());
+        //printRes(isSameTree());
+        printRes(maximumDepthBinaryTree());
     }
 
 

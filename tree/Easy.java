@@ -7,11 +7,13 @@ public class Easy {
     /**
      *              10  
      *             /  \
-     *            9    8
-     *          /   \ /  \
-     *          7   6 5   4
+     *            9     8
+     *          /   \  /  \
+     *          7   6  5   4
      *         / \  /
      *        3  2  1
+     *             /
+     *            0
      */
     /**
      * Is two tree same structurally and value wise ? 
@@ -115,5 +117,52 @@ public class Easy {
 
 
         return isSameTreeFun(t1, p1);
+    }
+
+    
+    private static int maxDepth(TreeNode root) {
+        // Base case 
+
+        if(root == null) 
+            return 0; 
+
+        int leftmost = maxDepth(root.left);
+        int rightmost = maxDepth(root.right);
+
+        return Math.max(leftmost, rightmost) + 1;
+
+    }
+
+    private static int maximumDepthBinaryTreeFun(TreeNode root) {
+        return maxDepth(root);        
+    }
+
+    public static int maximumDepthBinaryTree() {
+
+
+        TreeNode p1 = new TreeNode(10); 
+        TreeNode p2 = new TreeNode(9);
+        TreeNode p3 = new TreeNode(8); 
+        TreeNode p4 = new TreeNode(7);  
+        TreeNode p5 = new TreeNode(6); 
+        TreeNode p6 = new TreeNode(5);
+        TreeNode p7 = new TreeNode(4); 
+        TreeNode p8 = new TreeNode(3); 
+        TreeNode p9 = new TreeNode(2); 
+        TreeNode p10 = new TreeNode(1); 
+
+        p1.left = p2; 
+        p1.right = p3;  
+
+        p2.left = p4; 
+        p2.right = p5; 
+
+        p3.left = p6; 
+        p3.right = p7;
+
+        p4.left = p8; 
+        p4.right = p9; 
+
+        return maximumDepthBinaryTreeFun(p1);
     }
 }
