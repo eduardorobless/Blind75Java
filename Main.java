@@ -12,6 +12,7 @@ import static string.Easy.*;
 import static string.Medium.*;
 import static tree.Review.*; 
 import static tree.Easy.*;
+import static tree.Medium.*;
 
 import  java.util.List; 
 import java.util.ArrayList; 
@@ -205,9 +206,9 @@ class Main {
         //printRes(encodeDecodeStrings());
 
         /////////////////////////////////////////////////////// TREES/////////////////////////////////////////////////////////////////
-        //bfs();
+        bfs();
         //printRes(isSameTree());
-        printRes(maximumDepthBinaryTree());
+        //printRes(maximumDepthBinaryTree());
     }
 
 

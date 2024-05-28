@@ -200,7 +200,7 @@ public class Easy {
      *      
      */
 
-    private static TreeNode invertTree(TreeeNode root) {
+    private static TreeNode invertTree(TreeNode root) {
         if(root == null) 
             return null;
         
@@ -220,7 +220,7 @@ public class Easy {
 
 
 
-    public static TreeNode invertTree() {
+    public static TreeNode invertBinaryTree() {
         TreeNode p1 = new TreeNode(10); 
         TreeNode p2 = new TreeNode(9);
         TreeNode p3 = new TreeNode(8); 
@@ -244,5 +244,6 @@ public class Easy {
         p4.left = p8; 
         p4.right = p9; 
 
+        return invertTreeFun(p1);
     }
 }
