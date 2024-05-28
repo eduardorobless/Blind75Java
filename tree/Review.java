@@ -77,12 +77,29 @@ public class Review {
 
     /**
      * IN ORDER BINARY TREE TRAVERSAL 
+     *
+     *  In this type of binary tree traversal, each node is visited between the left and right children.
      * 
+     *  Order
+     *      Left -> Root -> Right
      * 
+     *  How it works
+     *      1. Recursively traverse the left subtree.
+     *      2. Visit the root node. 
+     *      3. Recursivelty traverse the right subtree.  
+     * 
+     *  Uses
+     *      It is commonly used to retrieve elements of a binary search tree in sorted order.
      */
-    private static void inOrderBinaryTreeTraversal(TreeNode root) {
 
-    }
+    private static void inOrderBinaryTreeTraversal(TreeNode root) {
+        if(root == null) return;
+        if(root != null ) {
+            inOrderBinaryTreeTraversal(root.left);// recursive left subtree 
+            System.out.println(root.val); // visit root node
+            inOrderBinaryTreeTraversal(root.right);// recusrive right subtree
+        }
+    }   
 
 
 
@@ -137,21 +154,30 @@ public class Review {
         TreeNode t9 = new TreeNode(2); 
         TreeNode t10 = new TreeNode(1); 
 
-        t1.left = t2; 
-        t1.right = t3;  
+        // t1.left = t2; 
+        // t1.right = t3;  
 
-        t2.left = t4; 
-        t2.right = t5; 
+        // t2.left = t4; 
+        // t2.right = t5; 
 
-        t3.left = t6; 
-        t3.right = t7;
+        // t3.left = t6; 
+        // t3.right = t7;
 
-        t4.left = t8; 
-        t4.right = t9; 
+        // t4.left = t8; 
+        // t4.right = t9; 
         
-        t5.left = t10;
+        // t5.left = t10;
 
 
-        preorderBinaryTreeTraversal(t1); 
+        t6.left = t8; 
+        t6.right = t3; 
+        
+        t8.left = t9; 
+        t8.right = t7; 
+
+        t3.left = t4; 
+        t3.right = t2;
+
+        inOrderBinaryTreeTraversal(t6); 
     }
 }
