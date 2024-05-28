@@ -206,9 +206,11 @@ class Main {
         //printRes(encodeDecodeStrings());
 
         /////////////////////////////////////////////////////// TREES/////////////////////////////////////////////////////////////////
-        bfs();
+        //bfs();
         //printRes(isSameTree());
         //printRes(maximumDepthBinaryTree());
+
+        binaryTreeTraversal();
     }
 
 
