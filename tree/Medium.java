@@ -33,12 +33,9 @@ public class Medium {
      */
     public static List<List<Integer>> binaryTreeLevelOrderTraversalFun(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>(); 
+      if(root == null) return res; // always check for edge cases, and remember that empty is different than nullchecking
 
-        Queue<TreeNode> queue = new LinkedList<>();
-
-
-        if(root == null) return res;
-         
+        Queue<TreeNode> queue = new LinkedList<>(); 
         // add root
         queue.add(root); 
 
@@ -50,9 +47,9 @@ public class Medium {
             for(int i = 0; i < queueSize; i++) {
                 // dequeue root and following nodes
                 TreeNode current = queue.poll();
-                innerLevel.add(current);
+                innerLevel.add(current.val);
             
-                if(current.left != null) 
+                if(current.left != null)  
                     queue.add(current.left);
                 
                 if(current.right != null) 

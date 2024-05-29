@@ -65,13 +65,39 @@ public class Review {
         }
 
     }
+    //       5
+    //      / \
+    //     3   8
+    //    / \ / \
+    //   2  4 7  9
 
 
     /**
      * POST ORDER BINARY TREE TRAVERSAL 
+     * 
+     *  In this type of binary tree traversal, each node is visited after its children
+     * 
+     *  Order  
+     *      Left -> Right -> Root
+     * 
+     *  How it works
+     * 
+     *      1. Recursively traverse the left subtree. 
+     *      2. Recursively traverse the right subtree. 
+     *      3. Visit the root node.
+     * 
+     *  Uses
+     *      Is often used in deleting or freeing nodes from memory, as it ensures that child nodes
+     *      are processed before their parent.
      */
     private static void postOrderBinaryTreeTraversal(TreeNode root) {
+        // if(root == null) return; 
 
+        if (root != null) {
+            postOrderBinaryTreeTraversal(root.left);// recursive left subtree             
+            postOrderBinaryTreeTraversal(root.right);// recusrive right subtree
+            System.out.println(root.val); // visit root node
+        }
     }
 
 
@@ -124,14 +150,12 @@ public class Review {
 
         System.out.println(root.val);
         
-        if(root.left != null) {
-
+        if(root.left != null) 
             preorderBinaryTreeTraversal(root.left);
-        }
 
-        if(root.right != null) { 
+        if(root.right != null) 
             preorderBinaryTreeTraversal(root.right);
-        }
+        
     }
     /**
      *              10  
@@ -178,6 +202,6 @@ public class Review {
         t3.left = t4; 
         t3.right = t2;
 
-        inOrderBinaryTreeTraversal(t6); 
+        postOrderBinaryTreeTraversal(t6); 
     }
 }
