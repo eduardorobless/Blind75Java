@@ -246,4 +246,102 @@ public class Easy {
 
         return invertTreeFun(p1);
     }
+
+
+    /**
+     * Is a tree subtree of another
+     * 
+     *  Objective: 
+     *      Determine if A tree contains B tree. 
+     *  Strategy:
+     *      Use a traversal to check if A tree contains B tree.
+     *  Time Complexity:
+     * 
+     *      O(N1 + N2 + M1 + M2); where N1 is the number of nodes in the A tree, N2 number of nodes in the B tree; M1 is the A string, M2 is the B string.
+     * 
+     *  Space Complexity:
+     *      O(h1 + h2 + M1 + M2).; where h1 is the height of A tree, h2 is the height of B tree; M1 is the length of A tree string, M2 of B tree.
+     * 
+     * OPTIMAL
+     * Time Complexity: 
+     * 
+     *  O(N1 * N2 )
+     * 
+     * Space Complexity: 
+     * 
+     *  O(H)
+     * 
+     * 
+     *              1
+     *             / \
+     *            2   3
+     *           / \ / \
+     *          4  5 6  7 
+     * 
+     *             
+     *             
+     *            2   
+     *           / \ 
+     *          4  5  
+     * 
+     * 
+     * 
+     * 
+     */
+    private static boolean isSubtreeOfAnotherTreeFun(TreeNode root, TreeNode subroot) {        
+        String aTree = TreeNode.preOrderBinaryTreeTraversal(root); 
+        String bTree = TreeNode.preOrderBinaryTreeTraversal(subroot);
+        System.out.println("a tree: " + aTree); 
+        System.out.println("b tree: " + bTree);
+        return aTree.contains(bTree);    
+    }
+
+    // to move trough root tree 
+    private  static boolean isSubtreeOfAnotherTreeOptimal(TreeNode root, TreeNode subRoot) {
+        if(root == null)
+            return false; 
+        return isIdentical(root, subRoot) || isSubtreeOfAnotherTreeOptimal(root.left, subRoot) ||
+                 isSubtreeOfAnotherTreeOptimal(root.right, subRoot);
+    }
+
+    // to compare identity values
+
+    private static boolean isIdentical(TreeNode s, TreeNode t) {
+        // case base if both are null or one of em is null
+        if(s == null && t == null) return true; 
+        if(s == null || t == null) return false; 
+
+        return s.val == t.val && isIdentical(s.left, t.left) && isIdentical(s.right, t.right);
+    }
+
+    public static boolean isSubtreeOfAnotherTree() {
+        TreeNode p1 = new TreeNode(3);
+        TreeNode p2 = new TreeNode(4); 
+        TreeNode p3 = new TreeNode(5); 
+        TreeNode p4 = new TreeNode(1); 
+        TreeNode p5 = new TreeNode(2);
+        TreeNode p6 = new TreeNode(0);
+
+
+        TreeNode q1 = new TreeNode(4); 
+        TreeNode q2 = new TreeNode(1); 
+        TreeNode q3 = new TreeNode(2);
+
+        p1.left = p2; 
+        p1.right = p3; 
+
+        p2.left = p4; 
+        p2.right = p5;
+        p5.left = p6;
+
+
+        q1.left = q2;
+        q1.right = q3;
+
+
+        return isSubtreeOfAnotherTreeOptimal(p1, q1);
+        
+    }
+
+    
 }

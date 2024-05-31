@@ -209,8 +209,8 @@ class Main {
         //bfs();
         //printRes(isSameTree());
         //printRes(maximumDepthBinaryTree());
-
-        binaryTreeTraversal();
+        //printRes(binaryTreeTraversal()); // review
+        printRes(isSubtreeOfAnotherTree()); 
     }
 
 
