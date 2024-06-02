@@ -210,7 +210,8 @@ class Main {
         //printRes(isSameTree());
         //printRes(maximumDepthBinaryTree());
         //printRes(binaryTreeTraversal()); // review
-        printRes(isSubtreeOfAnotherTree()); 
+        //printRes(isSubtreeOfAnotherTree()); 
+        printRes(lowestCommonAncestorBinaryTree().val);
     }
 
 
