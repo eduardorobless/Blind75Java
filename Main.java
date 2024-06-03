@@ -211,7 +211,8 @@ class Main {
         //printRes(maximumDepthBinaryTree());
         //printRes(binaryTreeTraversal()); // review
         //printRes(isSubtreeOfAnotherTree()); 
-        printRes(lowestCommonAncestorBinaryTree().val);
+        //printRes(lowestCommonAncestorBinaryTree().val);
+        printRes(isValidBST());
     }
 
 

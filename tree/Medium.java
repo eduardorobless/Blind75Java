@@ -213,6 +213,62 @@ public class Medium {
     }
 
 
+    private static boolean isValidBSTFun(TreeNode node, Integer lower, Integer upper) {
+
+        // case base
+        if (node == null) 
+            return true;
+
+        int val = node.val;
+        // checking 
+        // check for valid lower value 
+        if (lower != null && val <= lower ) 
+            return false; 
+        // check for valid upper value 
+        if (upper != null && val >=  upper) 
+            return false;
+
+
+        // check for valid childs 
+        // recursive all the way to right 
+
+        if(!isValidBSTFun(node.right, val, upper) ) 
+            return false;
+
+        // recursive all the way to left
+        if (!isValidBSTFun(node.left, lower, val)) 
+            return false;
+
+
+        return true;
+    }
+
+
+
+
+
+    /** 
+     * Is valid Binary Search Tree 
+     * 
+     *  Objective:
+     *      Determine if a binary tree is a valid binary search tree. 
+     *  
+     *  Strategy: 
+     *      To determine such a task you need to account for accomplish certain conditions: 
+     *          We first in a reverse preorder traversal (root, right, left) traverse the tree, looking for 
+     *          valid node values. 
+     *      Thus. valid node values, are the current.right value must be greather tan current, then check in left 
+     *      recursion the following condition; node = left, lower (parent value), current value.
+     * 
+     *  Time Complexity: 
+     *  O(N)
+     *  Space Complexity: 
+     *  O(H)     
+     *      
+     */
+    public static boolean isValidBST(){
+        return isValidBSTFun(Medium.bst1, null, null); // (infinity range)
+    }
 
 
 }
