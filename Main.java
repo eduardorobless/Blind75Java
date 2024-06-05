@@ -215,9 +215,10 @@ class Main {
         //printRes(lowestCommonAncestorBinaryTree().val);
         //printRes(isValidBST());
         //levelOrderBinaryTreeTraversal(constructBinaryTreeFromPreOrderAndInOrdeTraversal());
-        tree.TreeNode root = constructBinaryTreeFromPreOrderAndInOrdeTraversal();
-        //levelOrderBinaryTreeTraversal(root);
-        printRes(binaryTreeLevelOrderTraversalFun(root));
+        //tree.TreeNode root = constructBinaryTreeFromPreOrderAndInOrdeTraversal();
+        //printRes(binaryTreeLevelOrderTraversalFun(root));
+
+        printRes(kthSmallestElementInBST());
     }
 
 

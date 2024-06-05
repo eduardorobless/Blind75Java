@@ -338,23 +338,75 @@ public class Medium {
 
     
 
-    // private class Result  {
-    //     int count; 
-    //     int value; 
-
-    //     Result(int count, int value) {
-    //         this.count = count; 
-    //         this.value = value;
-    //     }
-    // }
-    // private  static TreeNode kthSmallestElementInBSTFun(TreeNode  root,)  {
-
-    // }
 
 
 
-    // public static TreeNode kthSmallestElementInBST() {
-    //     return kthSmallestElementInBSTFun();
-    // }
+    private  static Result kthSmallestElementInBSTFun(TreeNode  root, int k, int count)  {
+        // case base if root null return a new result object with empty value; 
+        if (root == null) {
+            return new Result(count, null);
+        } 
+
+        // start the fun :) 
+        // left traversal 
+        Result leftResult = kthSmallestElementInBSTFun(root.left, k, count);
+
+
+        // checking in root if we can exit 
+        if(leftResult.value != null) 
+            return leftResult;
+
+        // continue incrementing count in recursion 
+
+        
+        count = leftResult.count + 1; 
+
+        // right visit :)   
+
+
+        // we need to return from recursion, the most important part lol 
+        if(k == count) 
+            return new Result(count, root.val); 
+
+        return kthSmallestElementInBSTFun(root.right, k, count);
+
+        
+    }
+
+
+    /** 
+     *  Find the kth smallest element in a BST
+     * 
+     * Objective: 
+     *      Given k int value determine k smallest integer (1st index based) in a BST.
+     *  
+     * Approach:
+     *       inorder lookup incrementing counting when visitng root. 
+     * 
+     * Time Complexity:
+     *      O(N)
+     * 
+     * Space Complexity: 
+     *      O(H) 
+     * 
+     */
+
+    public static int kthSmallestElementInBST() {
+
+        Result result = kthSmallestElementInBSTFun(bst4, 1, 0);
+     
+        return result.value != null ? result.value : Integer.MIN_VALUE;
+    }
 
 }
+
+
+     class Result  {
+        int count; 
+        Integer value; 
+
+        Result(int count, Integer value) {
+            this.count = count; 
+            this.value = value;
+        }
+    }
