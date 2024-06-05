@@ -271,4 +271,69 @@ public class Medium {
     }
 
 
+    
+    private static TreeNode constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(int[] preOrder, Map<Integer, Integer> inOrderMap, 
+    int rootIndex, int left, int right) { 
+        // steps to do... 
+
+        // create root node 
+        int rootValue = preOrder[rootIndex];
+        TreeNode root = new TreeNode(rootValue);  
+        // get mid (root)
+        Int mid = inOrderMap.get(rootValue);
+        // assign left and rght nodes 
+        // look for left up to mid -1 in the inorder map
+
+        if(left < mid)
+
+            root.left = constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(preOrder, inOrderMap, rootIndex + 1, left, mid -1);
+
+
+        if (right > mid)
+
+            root.right = constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(preOrder, inOrderMap, rootIndex +1 + mid - left, mid+1, right);
+            
+
+        return root;
+    }
+    /**
+     * 
+     * Construct Binary Tree
+     * 
+     *  Remember:
+     *      Preorder: ROOT, LEFT, RIGHT
+     *      Inorder: LEFT, ROOT, RIGHT
+     * 
+     *  Objective: 
+     *      Base on preorder and inorder array construct binary tree
+     * 
+     *  Strategy: 
+     *      Using preorder array determine root of binary tree, use inorder tree to get left and right subtree according to said root. 
+     *      Having the left, and right subtree recursively repeat process till base conditions met: 
+     *      mid being equal to left and equal to right. 
+     *      return root. 
+     * 
+     *  Time Complexity: O(N) 
+     *  Space Complexity; O(N)
+     * 
+     *      
+     */
+
+    public static TreeNode constructBinaryTreeFromPreOrderAndInOrdeTraversal() {        
+        // we need hashmap to store index of inorder elements. 
+        int [] preOrder = {3, 9, 20, 15, 7}; 
+        int [] inOrder = {9, 3, 15, 20, 7};
+
+        Map<Integer, Integer> inOrderMap = new HashMap<>(); 
+
+        for(int i = 0; i < inOrder.length; i++) 
+            inOrderMap.put(inOrder[i], i); 
+
+    
+        // we need to lookup for nodes at preorder array based on index
+        // we need to lookup for nodes at preorder array based on index
+        return constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(preorder, inOrderMap, 0, 0, preorder.length - 1);
+    }
+
+
 }
