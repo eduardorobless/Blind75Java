@@ -13,6 +13,7 @@ import static string.Medium.*;
 import static tree.Review.*; 
 import static tree.Easy.*;
 import static tree.Medium.*;
+import static tree.TreeNode.*;
 
 import  java.util.List; 
 import java.util.ArrayList; 
@@ -212,7 +213,11 @@ class Main {
         //printRes(binaryTreeTraversal()); // review
         //printRes(isSubtreeOfAnotherTree()); 
         //printRes(lowestCommonAncestorBinaryTree().val);
-        printRes(isValidBST());
+        //printRes(isValidBST());
+        //levelOrderBinaryTreeTraversal(constructBinaryTreeFromPreOrderAndInOrdeTraversal());
+        tree.TreeNode root = constructBinaryTreeFromPreOrderAndInOrdeTraversal();
+        //levelOrderBinaryTreeTraversal(root);
+        printRes(binaryTreeLevelOrderTraversalFun(root));
     }
 
 

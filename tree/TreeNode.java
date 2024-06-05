@@ -164,7 +164,8 @@ import java.util.*;
         while(!queue.isEmpty()) {
             // dequeue root and following nodes
             TreeNode current = queue.poll();
-            traversal.append(current.val).append(" ");
+            traversal.append(current.val).append("");
+            
 
             if(current.left != null) 
                 queue.add(current.left);

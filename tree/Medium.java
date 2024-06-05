@@ -280,7 +280,7 @@ public class Medium {
         int rootValue = preOrder[rootIndex];
         TreeNode root = new TreeNode(rootValue);  
         // get mid (root)
-        Int mid = inOrderMap.get(rootValue);
+        int mid = inOrderMap.get(rootValue);
         // assign left and rght nodes 
         // look for left up to mid -1 in the inorder map
 
@@ -332,8 +332,29 @@ public class Medium {
     
         // we need to lookup for nodes at preorder array based on index
         // we need to lookup for nodes at preorder array based on index
-        return constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(preorder, inOrderMap, 0, 0, preorder.length - 1);
+        return constructBinaryTreeFromPreOrderAndInOrdeTraversalFun(preOrder, inOrderMap, 0, 0, preOrder.length - 1);
     }
 
+
+    
+
+    // private class Result  {
+    //     int count; 
+    //     int value; 
+
+    //     Result(int count, int value) {
+    //         this.count = count; 
+    //         this.value = value;
+    //     }
+    // }
+    // private  static TreeNode kthSmallestElementInBSTFun(TreeNode  root,)  {
+
+    // }
+
+
+
+    // public static TreeNode kthSmallestElementInBST() {
+    //     return kthSmallestElementInBSTFun();
+    // }
 
 }
