@@ -398,7 +398,106 @@ public class Medium {
         return result.value != null ? result.value : Integer.MIN_VALUE;
     }
 
+
+    /**
+     * Trie
+     * 
+     * Objective:
+     *  Create a trie data structure and implement insert, serach and stringStartsWith method.
+     * Strategy:  
+     *  Create a data structure storing each lowercase english alphabet letter at each node. 
+     * 
+     *
+     * To create a Trie, we need to first identy what are we going to store into it.
+     *  We are gonna store the lowercase English letters alphabhet so we create a Trie
+     *  array for each object, of size 26 and a flag to indicate that a character is
+     *  the end of the word. 
+     * 
+     * 
+     * Time Complexity: 
+     *  For insert: 
+     *      O(N) where is N is the world length
+     *  For search:
+     *      O(N)
+     *  For prefix lookup: 
+        *  O(N)
+     * 
+     * Space Complexity: 
+     *  For insert: O(EN) where EN is the sum of lenghts of all inserted words.
+     *  
+     *   
+     * 
+     */
+    public static void useTrie() {
+        String word = "cartoon";
+        String prefix = "car";
+        Trie obj = new Trie();
+        obj.insert(word);
+        boolean param_2 = obj.search(word);
+        boolean param_3 = obj.startsWith(prefix);        
+        System.out.println("Is word: " + word + " in trie?: " + param_2 + "\nDoes string: " + word + " has prefix: " + prefix + "?: " + param_3);
+    }
+
 }
+
+
+    class TrieNode {
+        public boolean endOfWord;
+        public TrieNode[] children; 
+        
+        public TrieNode() {
+            children =  new TrieNode[26];
+            endOfWord = false; 
+        }
+    }
+
+    class Trie {
+        private TrieNode root;
+
+        public Trie() {
+            root = new TrieNode();                        
+        }
+
+        public void insert(String word) {
+            //node points to root and will traverse
+            TrieNode node = root;   
+            for(char ch : word.toCharArray()) {
+                int index = ch - 'a';
+                if (node.children[index] == null) {
+                    // create new TrieNode 
+                    node.children[index] = new TrieNode();                    
+                }
+                node = node.children[index];
+            }
+
+            node.endOfWord = true;
+        }
+    
+        public boolean search(String word) {
+            TrieNode node = root; 
+            for(char ch: word.toCharArray()) {
+                // case base node.children is null 
+                node = node.children[ch - 'a'];
+                if (node == null) 
+                    return false; 
+            }
+
+            return node.endOfWord;
+        }
+
+        public boolean startsWith(String prefix) {
+            TrieNode node = root; 
+            for(char ch: prefix.toCharArray()) {
+                // case base node.children is null 
+                node = node.children[ch - 'a'];
+                if (node == null) 
+                    return false; 
+            }
+
+            return true;                
+        }
+
+    }
 
 
      class Result  {
