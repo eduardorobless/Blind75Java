@@ -218,7 +218,8 @@ class Main {
         //tree.TreeNode root = constructBinaryTreeFromPreOrderAndInOrdeTraversal();
         //printRes(binaryTreeLevelOrderTraversalFun(root));
         //printRes(kthSmallestElementInBST());
-        useTrie();
+        //useTrie();
+        designingAddSearchWord();
     }
 
 

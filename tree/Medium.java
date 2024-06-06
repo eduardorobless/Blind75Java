@@ -418,9 +418,9 @@ public class Medium {
      *  For insert: 
      *      O(N) where is N is the world length
      *  For search:
-     *      O(N)
+     *      O(N); where N is the length of the word
      *  For prefix lookup: 
-        *  O(N)
+        *  O(N); where N is the length of the prefix
      * 
      * Space Complexity: 
      *  For insert: O(EN) where EN is the sum of lenghts of all inserted words.
@@ -438,6 +438,39 @@ public class Medium {
         System.out.println("Is word: " + word + " in trie?: " + param_2 + "\nDoes string: " + word + " has prefix: " + prefix + "?: " + param_3);
     }
 
+
+
+    /**
+     * Design add search word
+     *  Objetive: 
+     *      Design a dataStructure to allow adding words to a dictionary, then searching by each character and also by wildcard '.'.
+     *  Strategy:
+     *      Design a trie when will store each character.
+     *      We will lookup each char in the trie, perform recursive search in case of '.' is found.
+     *  Time Complexiy:
+     * 
+     *  For Insert
+     *      O(N) 
+     *  For Search
+     *      O(N) when there is no wild cards, when there is wildcard time can be upto O(N * 26)
+     *  
+     *  Space Complexity:
+     *  For Insert: O(EN) where EN is the sum of lengths of all inseted words. 
+     *  For searching: O(K*m + n ); where n is the legnth of the search word, k is the number of unique characters, and m is the average lenght of words.     
+     */
+
+    public static void designingAddSearchWord() {
+        String word = "cat"; 
+        String searchWord = "ca.";
+        Trie obj = new Trie(); 
+        obj.insert(word); 
+        
+        boolean searchResult = obj.search(searchWord.toCharArray(), 0, obj.getRoot()); 
+        System.out.println("Doe word: " + searchWord  +  " appears in trie? " + searchResult); 
+         
+
+    }
+
 }
 
 
@@ -453,6 +486,10 @@ public class Medium {
 
     class Trie {
         private TrieNode root;
+
+        public TrieNode getRoot() {    
+            return root;
+        }
 
         public Trie() {
             root = new TrieNode();                        
@@ -484,6 +521,32 @@ public class Medium {
 
             return node.endOfWord;
         }
+
+
+
+
+        /** SEARCHIGN for including . char  overloading previous seach method */
+        public boolean search(char[] chars, int start, TrieNode node) {
+            // two main cases to handle, when getting dot, make recursive calls, otherwise do regular search
+            for(int i = start; i < chars.length; i++ ) {
+                char current = chars[i];
+
+                if(current == '.') {
+                    // check children of current node to see if they have a current value.
+                    for(TrieNode children : node.children) {
+                        if(children != null && search(chars, i + 1, children)) return  true;                         
+                    }
+                    return false;
+
+                } else {
+                    node = node.children[current - 'a'] ;
+                    if(node == null) return false;
+                }
+            }
+
+            return node.endOfWord;
+        }
+
 
         public boolean startsWith(String prefix) {
             TrieNode node = root; 
