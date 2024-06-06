@@ -452,11 +452,11 @@ public class Medium {
      *  For Insert
      *      O(N) 
      *  For Search
-     *      O(N) when there is no wild cards, when there is wildcard time can be upto O(N * 26)
+     *      O(N) when there is no wild cards, when there is wildcard time can be upto O(26^2 * N) = O(N), where N is the length of the word.
      *  
      *  Space Complexity:
      *  For Insert: O(EN) where EN is the sum of lengths of all inseted words. 
-     *  For searching: O(K*m + n ); where n is the legnth of the search word, k is the number of unique characters, and m is the average lenght of words.     
+     *      
      */
 
     public static void designingAddSearchWord() {
