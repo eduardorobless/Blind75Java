@@ -14,10 +14,12 @@ import static tree.Review.*;
 import static tree.Easy.*;
 import static tree.Medium.*;
 import static tree.TreeNode.*;
+import static interval.Easy.*;
 
 import  java.util.List; 
 import java.util.ArrayList; 
 import java.util.Arrays; 
+
 
 
 
@@ -219,7 +221,10 @@ class Main {
         //printRes(binaryTreeLevelOrderTraversalFun(root));
         //printRes(kthSmallestElementInBST());
         //useTrie();
-        designingAddSearchWord();
+        //designingAddSearchWord();
+        
+        /////////////////////////////////////////////////////// INTEVALS /////////////////////////////////////////////////////////////
+        printRes(canAttendMeetings());
     }
 
 
