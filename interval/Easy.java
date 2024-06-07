@@ -17,19 +17,6 @@ public class Easy {
      *      O(1)
      */
     private static boolean canAttendMeetingsFun(List<Interval> intervals) {
-
-        // sort 
-     // Create a comparator object using a lambda expression
-        // Comparator<Interval> comparator = (interval1, interval2) -> {
-        //     if (interval1 instanceof IntervalExtend && interval2 instanceof IntervalExtend ) {
-        //         return Integer.compare(interval1.getStart(), interval2.getStart());
-        //     } else {
-        //         return 0;
-        //     }
-        // };
-
-    List<Interval> mutableIntervals = new ArrayList<>(intervals);
-
      Comparator<Interval> comparator = (interval1, interval2) -> {
             if (interval1 instanceof IntervalExtend && interval2 instanceof IntervalExtend) {
                 IntervalExtend extend1 = (IntervalExtend) interval1; 
@@ -42,7 +29,7 @@ public class Easy {
             }
         };
         
-        Collections.sort(mutableIntervals, comparator);
+        Collections.sort(intervals, comparator);
 
         for(int i = 1; i < intervals.size(); i++) {
             int end =  intervals.get(i - 1).end; 
@@ -56,7 +43,17 @@ public class Easy {
     public static boolean canAttendMeetings() {
         List<Interval> intervals = List.of(new Interval(0, 30), new Interval(5, 10), new Interval(15, 20));
         List<Interval> intervals2 = List.of(new Interval(5, 8), new Interval(9, 15));
-        return canAttendMeetingsFun(intervals2); 
+
+        List<Interval> mutableIntervals = new ArrayList<>(); 
+        mutableIntervals.add(new  Interval(0, 30));
+        mutableIntervals.add(new Interval(5, 10)); 
+        mutableIntervals.add(new Interval(15, 20));
+
+
+        List<Interval> mutableIntervals2 = new ArrayList<>();
+        mutableIntervals2.add(new Interval(5, 8)); 
+        mutableIntervals2.add(new Interval(9, 15));
+        return canAttendMeetingsFun(mutableIntervals2); 
     }
 }
 
