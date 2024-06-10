@@ -16,6 +16,7 @@ import static tree.Medium.*;
 import static tree.TreeNode.*;
 import static interval.Easy.*;
 import static interval.Medium.*;
+import static matrix.Medium.*; 
 
 import  java.util.List; 
 import java.util.ArrayList; 
@@ -228,7 +229,10 @@ class Main {
         //printRes(meetingRooms());
         //printRes(meetingRoomsII());
         //printRes(merge());
-        printRes(eraseOverlapIntervals());
+        //printRes(eraseOverlapIntervals());
+
+        /////////////////////////////////////////////////////// MATRIX /////////////////////////////////////////////////////////////
+        setZeroes();
     }
 
 
