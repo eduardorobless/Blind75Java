@@ -227,7 +227,8 @@ class Main {
         /////////////////////////////////////////////////////// INTEVALS /////////////////////////////////////////////////////////////
         //printRes(meetingRooms());
         //printRes(meetingRoomsII());
-        printRes(merge());
+        //printRes(merge());
+        printRes(eraseOverlapIntervals());
     }
 
 

@@ -131,5 +131,62 @@ public class Medium {
         return mergeFun(input);
     }
 
+    /** Erase Overlap Intervals
+     *      Objective
+     *          Count the number of overlaping intervals to be removed in order  to have only non overlapping intervals.
+     *      Strategy
+     *          Store last end of first interval in a variable called lastEnd. The goal is to iterate from 1 up to length. 
+     *          Compare if we have one the following two scenarios: 
+     *          1. There is an overlap, so we have to update the lastEnd based on the min end value between currentEnd and lastEnd.
+     *          2. There is no overlap, update lastEnd on the currentEnd. 
+     *      Time Complexity:
+     *          O(N log(N))
+     *      Space Complexity:
+     *          O(1)
+     */
+    private static int eraseOverlapIntervalsFun(int[][] intervals) {
+             // sort int bidimensional array based on first index. 
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
+        int count = 0;
+        int lastEnd = intervals[0][1];
+
+        for(int i = 1; i < intervals.length; i++) {
+            // get last end index 
+            int currentStart = intervals[i][0];
+            int currentEnd = intervals[i][1];
+            // merge them if overlapping        
+            if (currentStart < lastEnd) {                
+                lastEnd = Math.min(lastEnd, currentEnd);
+                count++;
+            }                 
+            else {
+                lastEnd = currentEnd;            
+            }
+            // add a new one
+             
+      
+
+        }
+
+
+        return count;   
+    }
+    public static int eraseOverlapIntervals() {
+        int [][] intervals = {
+            {1, 2}, 
+            {2, 3},
+            {3, 4}, 
+            {1, 3}
+        }; 
+
+        int [][] intervals2 = {
+            {1, 2,}, 
+            {1, 2}, 
+            {1, 2}
+        }; 
+        return eraseOverlapIntervalsFun(intervals2);
+    }
+
 
 }
