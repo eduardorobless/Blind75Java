@@ -90,4 +90,74 @@ public class Medium {
 
 
     }
+
+    /** Spiral Order 
+     *      Objective
+     *          Realize a spiral traversal trough the matrix 
+     *      Strategy 
+     *          Traverse left to right  (RIGHT)
+     *          Traverse top to bottom  (DOWN)
+     *          Traverse Left to right  (LEFT)
+     *          Traverse bottom to top  (UP)
+     *          
+     *          Remember to check always if we are inside the boundaries inside the loop. 
+     *          Also check whenever we update array indexes whiting the main loop that we are currently within the boundaries.
+     *          When we finish the RIGHT traversal and update the row check in the LEFT traversal if it accomplish this boundarie. 
+     *          When we finish the LEFT TRAVERSAL and update col check if the RIGHT TRAVERSAL is withing this boundarie.
+     *              
+     *      
+     *     Time Complexity:
+     *          O(MN)
+     *     Space Complexity(MN)
+     */
+    private static List<Integer> spiralOrderFun(int[][] matrix) {
+        // initial boundaries 
+        int colStart = 0; 
+        int colEnd = matrix[0].length -1; 
+        int rowStart = 0;
+        int rowEnd = matrix.length -1; 
+        List<Integer> result = new ArrayList<>(); 
+
+        while (colStart <= colEnd && rowStart <= rowEnd) {
+            // traverse RIGHT
+            for (int j = colStart; j <= colEnd; j++)  {
+                result.add(matrix[rowStart][j]); 
+            }
+            rowStart++;
+            // traverse DOWN
+            for (int i = rowStart; i <= rowEnd; i++) {
+                result.add(matrix[i][colEnd]);
+            }
+            colEnd--;
+            // traverse LEFT 
+            // check for correctness 
+            if (rowStart <= rowEnd) {
+                for( int j = colEnd; j >= colStart; j--) {
+                    result.add(matrix[rowEnd][j]); 
+                }
+                      rowEnd--; 
+            }
+      
+
+            // traverse TOP
+            if ( colStart <= colEnd ) {
+                for (int i = rowEnd; i >= rowStart; i--) {
+                    result.add(matrix[i][colStart]); 
+                }
+                  colStart++;
+            }
+              
+             
+        }
+        return result;        
+    }
+
+    public static List<Integer> spiralOrder() {
+        int[][] matrix = {
+            {1, 2, 3}, 
+            {4, 5, 6}, 
+            {7, 8, 9}
+        }; 
+        return spiralOrderFun(matrix);
+    }
 }

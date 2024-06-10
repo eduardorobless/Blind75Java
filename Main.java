@@ -232,7 +232,9 @@ class Main {
         //printRes(eraseOverlapIntervals());
 
         /////////////////////////////////////////////////////// MATRIX /////////////////////////////////////////////////////////////
-        setZeroes();
+        //setZeroes();
+        //spiralOrder();
+        printRes(spiralOrder());
     }
 
 
@@ -260,8 +262,16 @@ class Main {
 
                     System.out.println(); 
                 }
-            }
-        
+
+                else {
+                    if (obj instanceof Integer) {
+                        Integer val = (Integer) obj;
+                        System.out.println(val);
+                    }
+                }
+                
+            } 
+
 
         }
         else if(res != null && res instanceof Integer) {
