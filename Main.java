@@ -226,7 +226,8 @@ class Main {
         
         /////////////////////////////////////////////////////// INTEVALS /////////////////////////////////////////////////////////////
         //printRes(meetingRooms());
-        printRes(meetingRoomsII());
+        //printRes(meetingRoomsII());
+        printRes(merge());
     }
 
 
@@ -260,6 +261,15 @@ class Main {
         }
         else if(res != null && res instanceof Integer) {
             System.out.println(res); 
+        } else if(res != null && res instanceof int[][]) {
+            // cast res 
+            int[][] resArray = (int[][]) res;
+            for (int r = 0; r < resArray.length; r++) {
+                for (int c = 0; c < resArray[r].length; c++) {
+                    System.out.print(resArray[r][c] + " ");
+                }
+                System.out.println();
+            }
         }
         else {
             System.out.println("Result is: " + res); 
