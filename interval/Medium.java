@@ -100,12 +100,12 @@ public class Medium {
         for(int i = 1; i < intervals.length; i++) {
             int resultSize = result.size();
             // get last end index 
-            int lastEndInterval =  result.get(resultSize -1)[1];
-            int start = intervals[i][0];
-            int end = intervals[i][1];
+            int lastEnd =  result.get(resultSize -1)[1];
+            int currentStart = intervals[i][0];
+            int currentEnd = intervals[i][1];
             // merge them if overlapping 
-            if (start <= lastEndInterval) {
-                result.get(resultSize -1)[1] = Math.max(lastEndInterval, end);
+            if (currentStart <= lastEnd) {
+                result.get(resultSize -1)[1] = Math.max(lastEnd, currentEnd);
             }                 
             // add a new one
             else 
