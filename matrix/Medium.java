@@ -160,4 +160,28 @@ public class Medium {
         }; 
         return spiralOrderFun(matrix);
     }
+
+
+    /** Rotate Matrix
+     *  Objective
+     *      Rotate a image matrix nxn in place, by 90 degrees (clockwise). 
+     *  Strategy
+     *      ...
+     *  Time Complexity
+     *  Space Complexity
+     * 
+     * 
+     *      
+     */
+    private static void rotate(int[][] matrix) {        
+    }
+
+    public static void rotate() {
+        int[][] matrix = {
+            {1, 2, 3}, 
+            {4, 5, 6}, 
+            {7, 8, 9}
+        };
+        rotate(matrix);
+    }
 }

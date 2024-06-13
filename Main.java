@@ -234,8 +234,9 @@ class Main {
         /////////////////////////////////////////////////////// MATRIX /////////////////////////////////////////////////////////////
         //setZeroes();
         //spiralOrder();
-        printRes(spiralOrder());
-    }
+        //printRes(spiralOrder());
+        rotate();
+    }    
 
 
 
