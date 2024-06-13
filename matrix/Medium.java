@@ -239,7 +239,7 @@ public class Medium {
     *       
     *       
     *   Space Complexity
-     *      O(N * M * 4 ^ L) , Where L is length of word 
+     *      O(N * M + 4 ^ L) , Where L is length of word 
      */
 
     private static boolean backtrackingSearch(char[][] board, String word, int i, int j, int index,  boolean[][] visited) {
