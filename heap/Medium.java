@@ -61,9 +61,6 @@ public class Medium {
             if(currentBucket != null) {
                 for(int num: currentBucket) {
                     res[counter++] = num;
-                    if(counter == k) {
-                        break;
-                    }
                 }
             }
         }
