@@ -243,10 +243,9 @@ public class Medium {
      */
 
     private static boolean backtrackingSearch(char[][] board, String word, int i, int j, int index,  boolean[][] visited) {
-        // case base 
         if (index == word.length() ) return true; 
         // check boundaries, correct value and visited cell
-        if (i < 0 || i >= board.length() || j < 0 || j >= board[0].length()  || word.charAt(index) != board[i][j] || 
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length  || word.charAt(index) != board[i][j] || 
             visited[i][j] )  return false;
         visited[i][j] = true; 
 
@@ -259,30 +258,29 @@ public class Medium {
 
         return false;
 
-    } 
+    }  
     private static boolean searchWordFun(char[][] board, String word) {
-        boardRowLength = board.length; 
-        boardColLength = board[0].length; 
+        int boardRowLength = board.length; 
+        int boardColLength = board[0].length; 
         boolean[][] visited = new boolean[boardRowLength][boardColLength]; 
 
-        for(int i = 0; i < boardRowLength, i++) {
+        for(int i = 0; i < boardRowLength; i++) {
             for(int j = 0; j < boardColLength; j++) {
-                if backtrackingSearch(board, word, i, j, 0, visited) return true; // search starts from any cell
+                if (backtrackingSearch(board, word, i, j, 0, visited)) return true; // search starts from any cell
             }
         }
 
-        return false; 
-        
+        return false;     
     }
 
     public static boolean searchWord() {
-        char[][] baoard= {
-            {"A", "B", "c", "E"}, 
-            {"S", "F", "C", "S"}, 
-            {"A", "D", "E", "E"}
+        char[][] board= {
+            {'A', 'B', 'C', 'E'}, 
+            {'S', 'F', 'C', 'S'}, 
+            {'A', 'D', 'E', 'E'}
         };
         String word = "ABCB";
-        return searchWorFun(board, word);
+        return searchWordFun(board, word);
 
     }
 }

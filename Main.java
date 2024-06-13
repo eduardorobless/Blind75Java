@@ -17,6 +17,7 @@ import static tree.TreeNode.*;
 import static interval.Easy.*;
 import static interval.Medium.*;
 import static matrix.Medium.*; 
+import static heap.Medium.*;
 
 import  java.util.List; 
 import java.util.ArrayList; 
@@ -235,7 +236,9 @@ class Main {
         //setZeroes();
         //spiralOrder();
         //printRes(spiralOrder());
-        rotate();
+        //rotate();
+        /////////////////////////////////////////////////////// HEAP ///////////////////////////////////////////////////////////////////
+        printRes(topFrequent());
     }    
 
 
