@@ -169,8 +169,10 @@ public class Medium {
      *      Get matrix transpose
      *      Reverse each row
      *      ...
-     *  Time Complexity
+     *  Time Complexity 
+     *  O(N)
      *  Space Complexity 
+     *  O(1)
      * 
      * 
      *      
@@ -218,5 +220,69 @@ public class Medium {
 
         rotateFun(matrix);
         printMatrix(matrix);
+    }
+
+    /**
+     * Search Word 
+     *  Objective
+     *      To be able to search recursively using backtracking. 
+     *  
+     * 
+     * 
+     * Strategy
+     *      Define a recursive approach using backtracking to 
+     *      allow to explore neighbours of matrix cell, until search word is 
+    *       found or not. 
+    * 
+    *   Time Complexity
+    *       O(N * M * 4 ^ L) , Where L is length of word 
+    *       
+    *       
+    *   Space Complexity
+     *      O(N * M * 4 ^ L) , Where L is length of word 
+     */
+
+    private static boolean backtrackingSearch(char[][] board, String word, int i, int j, int index,  boolean[][] visited) {
+        // case base 
+        if (index == word.length() ) return true; 
+        // check boundaries, correct value and visited cell
+        if (i < 0 || i >= board.length() || j < 0 || j >= board[0].length()  || word.charAt(index) != board[i][j] || 
+            visited[i][j] )  return false;
+        visited[i][j] = true; 
+
+        if (backtrackingSearch(board, word, i + 1, j, index + 1, visited) || 
+        backtrackingSearch(board, word, i - 1, j, index + 1, visited) ||
+        backtrackingSearch(board, word, i, j + 1, index + 1, visited) ||
+        backtrackingSearch(board, word, i, j - 1, index + 1, visited) ) 
+            return true; 
+        visited[i][j] = false; 
+
+        return false;
+
+    } 
+    private static boolean searchWordFun(char[][] board, String word) {
+        boardRowLength = board.length; 
+        boardColLength = board[0].length; 
+        boolean[][] visited = new boolean[boardRowLength][boardColLength]; 
+
+        for(int i = 0; i < boardRowLength, i++) {
+            for(int j = 0; j < boardColLength; j++) {
+                if backtrackingSearch(board, word, i, j, 0, visited) return true; // search starts from any cell
+            }
+        }
+
+        return false; 
+        
+    }
+
+    public static boolean searchWord() {
+        char[][] baoard= {
+            {"A", "B", "c", "E"}, 
+            {"S", "F", "C", "S"}, 
+            {"A", "D", "E", "E"}
+        };
+        String word = "ABCB";
+        return searchWorFun(board, word);
+
     }
 }
